@@ -15,8 +15,8 @@ namespace FoodOrderDAL.SeedData
         {
             builder.HasData
                 (
-                    new PaymentMethods {PaymentName = "Kredi/Banka Kartı", Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
-                    new PaymentMethods {PaymentName = "Nakit", Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now }
+                    new PaymentMethods { ID = 1, PaymentName = "Kredi/Banka Kartı", Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
+                    new PaymentMethods { ID = 2, PaymentName = "Nakit", Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now }
                 );
         }
     }

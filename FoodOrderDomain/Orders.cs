@@ -8,11 +8,11 @@ namespace FoodOrderDomain
 {
     public class Orders:BaseClass
     {
-        public int CustomerID { get; set; }
+        public int? CustomerID { get; set; }
         public Customers Customer { get; set; }
         public int AddressID { get; set; }
         public AddressInformations Address { get; set; }
-        public int ContactID { get; set; }
+        public int? ContactID { get; set; }
         public ContactInformations ContactInfo { get; set; }
         public int OrderStateID { get; set; }  // "Hazırlanıyor", "Teslim Edildi", "İptal Edildi"
         public OrderStates OrderState { get; set; } // "Hazırlanıyor", "Teslim Edildi", "İptal Edildi"

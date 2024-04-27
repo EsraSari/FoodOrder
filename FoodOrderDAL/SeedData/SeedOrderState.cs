@@ -15,10 +15,10 @@ namespace FoodOrderDAL.SeedData
         {
             builder.HasData
                  (
-                     new OrderStates { OrderState = "Hazırlanıyor", Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now},
-                     new OrderStates { OrderState = "Teslim Edildi", Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
-                     new OrderStates { OrderState = "İptal Edildi", Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now }
+                     new OrderStates { ID = 1, OrderState = "Hazırlanıyor", Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now},
+                     new OrderStates { ID = 2, OrderState = "Teslim Edildi", Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
+                     new OrderStates { ID = 3, OrderState = "İptal Edildi", Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now }
                  );
-           }
+        }
     }
 }

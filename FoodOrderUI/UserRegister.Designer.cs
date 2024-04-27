@@ -40,14 +40,23 @@
             txtPassword = new TextBox();
             cbGender = new ComboBox();
             dtBirthDate = new DateTimePicker();
+            cbCountries = new ComboBox();
+            lblCountry = new Label();
+            lblCities = new Label();
+            cbCities = new ComboBox();
+            grpUserInfo = new GroupBox();
+            lblAddressDetails = new Label();
+            cbCounties = new ComboBox();
+            textBox1 = new TextBox();
+            İlçe = new Label();
             btnRegister = new Button();
-            label1 = new Label();
+            grpUserInfo.SuspendLayout();
             SuspendLayout();
             // 
             // lblFirstName
             // 
             lblFirstName.AutoSize = true;
-            lblFirstName.Location = new Point(53, 21);
+            lblFirstName.Location = new Point(93, 74);
             lblFirstName.Name = "lblFirstName";
             lblFirstName.Size = new Size(28, 20);
             lblFirstName.TabIndex = 0;
@@ -56,7 +65,7 @@
             // lblLastName
             // 
             lblLastName.AutoSize = true;
-            lblLastName.Location = new Point(53, 72);
+            lblLastName.Location = new Point(95, 128);
             lblLastName.Name = "lblLastName";
             lblLastName.Size = new Size(50, 20);
             lblLastName.TabIndex = 1;
@@ -65,7 +74,7 @@
             // lblGender
             // 
             lblGender.AutoSize = true;
-            lblGender.Location = new Point(53, 130);
+            lblGender.Location = new Point(93, 180);
             lblGender.Name = "lblGender";
             lblGender.Size = new Size(60, 20);
             lblGender.TabIndex = 2;
@@ -74,7 +83,7 @@
             // lblBirthDate
             // 
             lblBirthDate.AutoSize = true;
-            lblBirthDate.Location = new Point(53, 181);
+            lblBirthDate.Location = new Point(93, 234);
             lblBirthDate.Name = "lblBirthDate";
             lblBirthDate.Size = new Size(98, 20);
             lblBirthDate.TabIndex = 3;
@@ -83,7 +92,7 @@
             // lblUserName
             // 
             lblUserName.AutoSize = true;
-            lblUserName.Location = new Point(55, 223);
+            lblUserName.Location = new Point(93, 280);
             lblUserName.Name = "lblUserName";
             lblUserName.Size = new Size(92, 20);
             lblUserName.TabIndex = 4;
@@ -92,7 +101,7 @@
             // lblPassword
             // 
             lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(53, 273);
+            lblPassword.Location = new Point(93, 326);
             lblPassword.Name = "lblPassword";
             lblPassword.Size = new Size(39, 20);
             lblPassword.TabIndex = 5;
@@ -100,28 +109,28 @@
             // 
             // txtFirstName
             // 
-            txtFirstName.Location = new Point(186, 21);
+            txtFirstName.Location = new Point(226, 74);
             txtFirstName.Name = "txtFirstName";
             txtFirstName.Size = new Size(125, 27);
             txtFirstName.TabIndex = 6;
             // 
             // txtLastName
             // 
-            txtLastName.Location = new Point(186, 72);
+            txtLastName.Location = new Point(226, 125);
             txtLastName.Name = "txtLastName";
             txtLastName.Size = new Size(125, 27);
             txtLastName.TabIndex = 7;
             // 
             // txtUserName
             // 
-            txtUserName.Location = new Point(186, 220);
+            txtUserName.Location = new Point(226, 273);
             txtUserName.Name = "txtUserName";
             txtUserName.Size = new Size(125, 27);
             txtUserName.TabIndex = 8;
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(186, 273);
+            txtPassword.Location = new Point(226, 326);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(125, 27);
             txtPassword.TabIndex = 9;
@@ -130,59 +139,138 @@
             // 
             cbGender.FormattingEnabled = true;
             cbGender.Items.AddRange(new object[] { "Kadın", "Erkek" });
-            cbGender.Location = new Point(186, 127);
+            cbGender.Location = new Point(226, 180);
             cbGender.Name = "cbGender";
             cbGender.Size = new Size(151, 28);
             cbGender.TabIndex = 10;
             // 
             // dtBirthDate
             // 
-            dtBirthDate.Location = new Point(186, 176);
+            dtBirthDate.Location = new Point(226, 229);
             dtBirthDate.Name = "dtBirthDate";
             dtBirthDate.Size = new Size(250, 27);
             dtBirthDate.TabIndex = 11;
             // 
+            // cbCountries
+            // 
+            cbCountries.FormattingEnabled = true;
+            cbCountries.Location = new Point(226, 387);
+            cbCountries.Name = "cbCountries";
+            cbCountries.Size = new Size(151, 28);
+            cbCountries.TabIndex = 14;
+            // 
+            // lblCountry
+            // 
+            lblCountry.AutoSize = true;
+            lblCountry.Location = new Point(93, 385);
+            lblCountry.Name = "lblCountry";
+            lblCountry.Size = new Size(38, 20);
+            lblCountry.TabIndex = 15;
+            lblCountry.Text = "Ülke";
+            // 
+            // lblCities
+            // 
+            lblCities.AutoSize = true;
+            lblCities.Location = new Point(95, 447);
+            lblCities.Name = "lblCities";
+            lblCities.Size = new Size(42, 20);
+            lblCities.TabIndex = 16;
+            lblCities.Text = "Şehir";
+            // 
+            // cbCities
+            // 
+            cbCities.FormattingEnabled = true;
+            cbCities.Location = new Point(226, 439);
+            cbCities.Name = "cbCities";
+            cbCities.Size = new Size(151, 28);
+            cbCities.TabIndex = 17;
+            // 
+            // grpUserInfo
+            // 
+            grpUserInfo.Controls.Add(lblAddressDetails);
+            grpUserInfo.Controls.Add(cbCounties);
+            grpUserInfo.Controls.Add(textBox1);
+            grpUserInfo.Controls.Add(İlçe);
+            grpUserInfo.Controls.Add(dtBirthDate);
+            grpUserInfo.Controls.Add(cbCities);
+            grpUserInfo.Controls.Add(lblFirstName);
+            grpUserInfo.Controls.Add(lblCities);
+            grpUserInfo.Controls.Add(lblLastName);
+            grpUserInfo.Controls.Add(lblCountry);
+            grpUserInfo.Controls.Add(lblGender);
+            grpUserInfo.Controls.Add(cbCountries);
+            grpUserInfo.Controls.Add(lblBirthDate);
+            grpUserInfo.Controls.Add(lblUserName);
+            grpUserInfo.Controls.Add(lblPassword);
+            grpUserInfo.Controls.Add(cbGender);
+            grpUserInfo.Controls.Add(txtFirstName);
+            grpUserInfo.Controls.Add(txtPassword);
+            grpUserInfo.Controls.Add(txtLastName);
+            grpUserInfo.Controls.Add(txtUserName);
+            grpUserInfo.Location = new Point(35, 12);
+            grpUserInfo.Name = "grpUserInfo";
+            grpUserInfo.Size = new Size(553, 844);
+            grpUserInfo.TabIndex = 18;
+            grpUserInfo.TabStop = false;
+            grpUserInfo.Text = "Kullanıcı Bilgileri";
+            // 
+            // lblAddressDetails
+            // 
+            lblAddressDetails.AutoSize = true;
+            lblAddressDetails.Location = new Point(95, 562);
+            lblAddressDetails.Name = "lblAddressDetails";
+            lblAddressDetails.Size = new Size(173, 20);
+            lblAddressDetails.TabIndex = 21;
+            lblAddressDetails.Text = "Adres bilgilerinizi giriniz:";
+            // 
+            // cbCounties
+            // 
+            cbCounties.FormattingEnabled = true;
+            cbCounties.Location = new Point(226, 496);
+            cbCounties.Name = "cbCounties";
+            cbCounties.Size = new Size(151, 28);
+            cbCounties.TabIndex = 20;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(95, 594);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(328, 170);
+            textBox1.TabIndex = 19;
+            // 
+            // İlçe
+            // 
+            İlçe.AutoSize = true;
+            İlçe.Location = new Point(93, 504);
+            İlçe.Name = "İlçe";
+            İlçe.Size = new Size(32, 20);
+            İlçe.TabIndex = 18;
+            İlçe.Text = "İlçe";
+            // 
             // btnRegister
             // 
-            btnRegister.Location = new Point(127, 339);
+            btnRegister.Location = new Point(266, 894);
             btnRegister.Name = "btnRegister";
-            btnRegister.Size = new Size(130, 66);
-            btnRegister.TabIndex = 12;
+            btnRegister.Size = new Size(94, 58);
+            btnRegister.TabIndex = 19;
             btnRegister.Text = "Kayıt Ol";
             btnRegister.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(367, 304);
-            label1.Name = "label1";
-            label1.Size = new Size(151, 20);
-            label1.TabIndex = 13;
-            label1.Text = "adres bilgilerini eklee";
+            btnRegister.Click += btnRegister_Click_1;
             // 
             // UserRegister
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(541, 450);
-            Controls.Add(label1);
+            ClientSize = new Size(632, 982);
             Controls.Add(btnRegister);
-            Controls.Add(dtBirthDate);
-            Controls.Add(cbGender);
-            Controls.Add(txtPassword);
-            Controls.Add(txtUserName);
-            Controls.Add(txtLastName);
-            Controls.Add(txtFirstName);
-            Controls.Add(lblPassword);
-            Controls.Add(lblUserName);
-            Controls.Add(lblBirthDate);
-            Controls.Add(lblGender);
-            Controls.Add(lblLastName);
-            Controls.Add(lblFirstName);
+            Controls.Add(grpUserInfo);
             Name = "UserRegister";
             Text = "UserRegister";
+            Load += UserRegister_Load;
+            grpUserInfo.ResumeLayout(false);
+            grpUserInfo.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -199,7 +287,15 @@
         private TextBox txtPassword;
         private ComboBox cbGender;
         private DateTimePicker dtBirthDate;
+        private ComboBox cbCountries;
+        private Label lblCountry;
+        private Label lblCities;
+        private ComboBox cbCities;
+        private GroupBox grpUserInfo;
+        private Label lblAddressDetails;
+        private ComboBox cbCounties;
+        private TextBox textBox1;
+        private Label İlçe;
         private Button btnRegister;
-        private Label label1;
     }
 }

@@ -8,4 +8,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FoodOrderDAL\FoodOrderDAL.csproj" />
+    <ProjectReference Include="..\FoodOrderDomain\FoodOrderDomain.csproj" />
+  </ItemGroup>
+
 </Project>

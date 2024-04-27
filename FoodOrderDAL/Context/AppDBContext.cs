@@ -1,4 +1,5 @@
-﻿using FoodOrderDomain;
+﻿using FoodOrderDAL.SeedData;
+using FoodOrderDomain;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,18 @@ namespace FoodOrderDAL.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ProductMapping());
+            modelBuilder.ApplyConfiguration(new CityMapping());
+            modelBuilder.ApplyConfiguration(new ContactInfoMapping());
+            modelBuilder.ApplyConfiguration(new MenuMapping());
+            modelBuilder.ApplyConfiguration(new OrderMapping());
+            modelBuilder.ApplyConfiguration(new AddressMapping());
+
+            modelBuilder.ApplyConfiguration(new SeedOrderState());
+            modelBuilder.ApplyConfiguration(new SeedPaymentMethods());
+            modelBuilder.ApplyConfiguration(new SeedCities());
+            modelBuilder.ApplyConfiguration(new SeedCounties());
+            modelBuilder.ApplyConfiguration(new SeedCountries());
+
             base.OnModelCreating(modelBuilder);
         }
 
@@ -33,9 +46,8 @@ namespace FoodOrderDAL.Context
         public DbSet<PaymentMethods> PaymentMethods{ get; set; }
         public DbSet<Stock> Stocks{ get; set; }
         public DbSet<ProductDetails> ProductDetails{ get; set; }
-        public DbSet<OrderMenu> OrderMenu { get; set; }
         public DbSet<ProductMenu> ProductMenu{ get; set; }
-        public DbSet<OrderProduct> OrderProduct { get; set; }
+        public DbSet<OrderDetails> OrderDetails{ get; set; }
         public DbSet<Orders> Orders { get; set; }
         public DbSet<OrderStates> OrderStates{ get; set; }
 

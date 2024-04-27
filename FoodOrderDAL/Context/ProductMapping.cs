@@ -10,11 +10,10 @@ using System.Threading.Tasks;
 namespace FoodOrderDAL.Context
 {
     public class ProductMapping : IEntityTypeConfiguration<Products>
-    {
+    {   
         public void Configure(EntityTypeBuilder<Products> builder)
         {
             builder.Property(x => x.ProductName).IsRequired();
-
 
 
             builder.HasOne(x => x.ProductDetail)

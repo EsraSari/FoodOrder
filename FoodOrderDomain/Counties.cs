@@ -9,7 +9,7 @@ namespace FoodOrderDomain
     public class Counties: BaseClass // ilçe
     {
         public int CityID { get; set; }
-        public List <Cities> City { get; set; }
+        public Cities City { get; set; }
         public string CountyName { get; set; }
         public List<AddressInformations> AddressInfo { get; set; }
     }

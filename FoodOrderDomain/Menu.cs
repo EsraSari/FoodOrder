@@ -12,7 +12,6 @@ namespace FoodOrderDomain
         public DateTime PreparationTime { get; set; }
         public bool IsAllergen { get; set; }// burada menüye eklenen ürünlerin totali olarak yansıtıcaz.
         public decimal Price { get; set; }// burada menüye eklenen ürünlerin totali olarak yansıtıcaz.
-        public int StockID { get; set; }
         public Stock Stock { get; set; }
     }
 }

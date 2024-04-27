@@ -78,16 +78,6 @@
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += button1_Click;
             // 
-            // btnRegister
-            // 
-            btnRegister.Location = new Point(204, 293);
-            btnRegister.Name = "btnRegister";
-            btnRegister.Size = new Size(134, 46);
-            btnRegister.TabIndex = 5;
-            btnRegister.Text = "Kayıt Ol";
-            btnRegister.UseVisualStyleBackColor = true;
-            btnRegister.Click += this.btnRegister_Click;
-            // 
             // UserLogin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
