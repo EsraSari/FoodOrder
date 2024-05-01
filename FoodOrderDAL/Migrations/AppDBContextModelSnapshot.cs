@@ -92,6 +92,24 @@ namespace FoodOrderDAL.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9341),
+                            CategoryName = "Yiyecek",
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9342),
+                            Status = true
+                        },
+                        new
+                        {
+                            ID = 2,
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9343),
+                            CategoryName = "İçecek",
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9344),
+                            Status = true
+                        });
                 });
 
             modelBuilder.Entity("FoodOrderDomain.Cities", b =>
@@ -128,82 +146,82 @@ namespace FoodOrderDAL.Migrations
                         new
                         {
                             ID = 1,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4591),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8877),
                             CityName = "İstanbul",
                             CountryID = 1,
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4591),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8877),
                             Status = true
                         },
                         new
                         {
                             ID = 2,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4593),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8880),
                             CityName = "Ankara",
-                            CountryID = 6,
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4593),
+                            CountryID = 1,
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8880),
                             Status = true
                         },
                         new
                         {
                             ID = 3,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4595),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8882),
                             CityName = "İzmir",
-                            CountryID = 6,
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4595),
+                            CountryID = 1,
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8882),
                             Status = true
                         },
                         new
                         {
                             ID = 4,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4597),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8884),
                             CityName = "Bursa",
-                            CountryID = 6,
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4597),
+                            CountryID = 1,
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8884),
                             Status = true
                         },
                         new
                         {
                             ID = 5,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4599),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8886),
                             CityName = "Antalya",
-                            CountryID = 6,
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4599),
+                            CountryID = 1,
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8887),
                             Status = true
                         },
                         new
                         {
                             ID = 6,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4601),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8888),
                             CityName = "Adana",
-                            CountryID = 6,
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4602),
+                            CountryID = 1,
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8889),
                             Status = true
                         },
                         new
                         {
                             ID = 7,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4603),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8891),
                             CityName = "Konya",
-                            CountryID = 6,
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4604),
+                            CountryID = 1,
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8891),
                             Status = true
                         },
                         new
                         {
                             ID = 8,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4605),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8893),
                             CityName = "Kayseri",
-                            CountryID = 6,
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4606),
+                            CountryID = 1,
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8893),
                             Status = true
                         },
                         new
                         {
                             ID = 9,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4607),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8895),
                             CityName = "Mersin",
-                            CountryID = 6,
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4608),
+                            CountryID = 1,
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8895),
                             Status = true
                         });
                 });
@@ -310,145 +328,172 @@ namespace FoodOrderDAL.Migrations
                         new
                         {
                             ID = 1,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4733),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8989),
                             CityID = 1,
                             CountyName = "Kağıthane",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4734),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8990),
                             Status = true
                         },
                         new
                         {
                             ID = 2,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4735),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8992),
                             CityID = 1,
                             CountyName = "Şişli",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4736),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8992),
                             Status = true
                         },
                         new
                         {
                             ID = 3,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4737),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8994),
                             CityID = 1,
                             CountyName = "Beşiktaş",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4738),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8995),
                             Status = true
                         },
                         new
                         {
                             ID = 4,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4740),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8997),
                             CityID = 1,
                             CountyName = "Beyoğlu",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4740),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8997),
                             Status = true
                         },
                         new
                         {
                             ID = 5,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4742),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8999),
                             CityID = 1,
                             CountyName = "Kadıköy",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4743),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8999),
                             Status = true
                         },
                         new
                         {
                             ID = 6,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4744),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9001),
                             CityID = 1,
                             CountyName = "Üsküdar",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4744),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9001),
                             Status = true
                         },
                         new
                         {
                             ID = 7,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4746),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9003),
                             CityID = 1,
                             CountyName = "Fatih",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4746),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9003),
                             Status = true
                         },
                         new
                         {
                             ID = 8,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4748),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9005),
                             CityID = 1,
                             CountyName = "Bakırköy",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4748),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9006),
                             Status = true
                         },
                         new
                         {
                             ID = 9,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4750),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9007),
                             CityID = 1,
                             CountyName = "Maltepe",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4750),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9008),
                             Status = true
                         },
                         new
                         {
                             ID = 10,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4752),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9009),
                             CityID = 1,
                             CountyName = "Ataşehir",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4753),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9010),
                             Status = true
                         },
                         new
                         {
                             ID = 11,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4754),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9011),
                             CityID = 1,
                             CountyName = "Büyükçekmece",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4755),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9012),
                             Status = true
                         },
                         new
                         {
                             ID = 12,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4756),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9014),
                             CityID = 1,
                             CountyName = "Sarıyer",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4757),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9014),
                             Status = true
                         },
                         new
                         {
                             ID = 13,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4758),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9016),
                             CityID = 1,
                             CountyName = "Kartal",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4759),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9016),
                             Status = true
                         },
                         new
                         {
                             ID = 14,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4760),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9018),
                             CityID = 1,
                             CountyName = "Şile",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4761),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9018),
                             Status = true
                         },
                         new
                         {
                             ID = 15,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4762),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9020),
                             CityID = 1,
                             CountyName = "Çatalca",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4763),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9020),
                             Status = true
                         },
                         new
                         {
                             ID = 16,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4764),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9022),
                             CityID = 1,
                             CountyName = "Adalar",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4765),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9023),
+                            Status = true
+                        },
+                        new
+                        {
+                            ID = 17,
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9024),
+                            CityID = 2,
+                            CountyName = "Altındağ",
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9025),
+                            Status = true
+                        },
+                        new
+                        {
+                            ID = 18,
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9026),
+                            CityID = 2,
+                            CountyName = "Ayaş",
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9027),
+                            Status = true
+                        },
+                        new
+                        {
+                            ID = 19,
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9029),
+                            CityID = 2,
+                            CountyName = "Bala",
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9029),
                             Status = true
                         });
                 });
@@ -482,89 +527,89 @@ namespace FoodOrderDAL.Migrations
                         new
                         {
                             ID = 1,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4897),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9134),
                             CountryName = "Türkiye",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4898),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9135),
                             Status = true
                         },
                         new
                         {
                             ID = 2,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4899),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9137),
                             CountryName = "Almanya",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4900),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9137),
                             Status = true
                         },
                         new
                         {
                             ID = 3,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4902),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9139),
                             CountryName = "Fransa",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4902),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9140),
                             Status = true
                         },
                         new
                         {
                             ID = 4,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4903),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9142),
                             CountryName = "İngiltere",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4904),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9142),
                             Status = true
                         },
                         new
                         {
                             ID = 5,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4905),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9144),
                             CountryName = "İtalya",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4906),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9145),
                             Status = true
                         },
                         new
                         {
                             ID = 6,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4907),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9146),
                             CountryName = "İspanya",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4908),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9147),
                             Status = true
                         },
                         new
                         {
                             ID = 7,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4909),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9148),
                             CountryName = "Türkiye",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4909),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9149),
                             Status = true
                         },
                         new
                         {
                             ID = 8,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4911),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9151),
                             CountryName = "Ukrayna",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4911),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9151),
                             Status = true
                         },
                         new
                         {
                             ID = 9,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4913),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9153),
                             CountryName = "Polonya",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4913),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9153),
                             Status = true
                         },
                         new
                         {
                             ID = 10,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4915),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9155),
                             CountryName = "Romanya",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4915),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9155),
                             Status = true
                         },
                         new
                         {
                             ID = 11,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4917),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9157),
                             CountryName = "Hollanda",
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4917),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9158),
                             Status = true
                         });
                 });
@@ -587,8 +632,8 @@ namespace FoodOrderDAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Gender")
-                        .HasColumnType("bit");
+                    b.Property<int>("GenderID")
+                        .HasColumnType("int");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -606,11 +651,60 @@ namespace FoodOrderDAL.Migrations
 
                     b.Property<string>("UserName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("ID");
 
+                    b.HasIndex("GenderID");
+
+                    b.HasIndex("UserName")
+                        .IsUnique();
+
                     b.ToTable("Customers");
+                });
+
+            modelBuilder.Entity("FoodOrderDomain.Genders", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime>("AddedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Genders");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9246),
+                            Gender = "Kadın",
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9246),
+                            Status = true
+                        },
+                        new
+                        {
+                            ID = 2,
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9248),
+                            Gender = "Erkek",
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9249),
+                            Status = true
+                        });
                 });
 
             modelBuilder.Entity("FoodOrderDomain.Menu", b =>
@@ -634,8 +728,8 @@ namespace FoodOrderDAL.Migrations
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("PreparationTime")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("PreparationTime")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -671,7 +765,7 @@ namespace FoodOrderDAL.Migrations
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("OrderID")
+                    b.Property<int>("ProductID")
                         .HasColumnType("int");
 
                     b.Property<bool>("Status")
@@ -681,7 +775,7 @@ namespace FoodOrderDAL.Migrations
 
                     b.HasIndex("MenuID");
 
-                    b.HasIndex("OrderID");
+                    b.HasIndex("ProductID");
 
                     b.ToTable("OrderDetails");
                 });
@@ -715,24 +809,24 @@ namespace FoodOrderDAL.Migrations
                         new
                         {
                             ID = 1,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4157),
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4174),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8553),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8553),
                             OrderState = "Hazırlanıyor",
                             Status = true
                         },
                         new
                         {
                             ID = 2,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4176),
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4176),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8555),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8556),
                             OrderState = "Teslim Edildi",
                             Status = true
                         },
                         new
                         {
                             ID = 3,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4178),
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4179),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8558),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8558),
                             OrderState = "İptal Edildi",
                             Status = true
                         });
@@ -761,6 +855,9 @@ namespace FoodOrderDAL.Migrations
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("OrderDetailsID")
+                        .HasColumnType("int");
+
                     b.Property<string>("OrderNotes")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -787,6 +884,8 @@ namespace FoodOrderDAL.Migrations
                     b.HasIndex("ContactID");
 
                     b.HasIndex("CustomerID");
+
+                    b.HasIndex("OrderDetailsID");
 
                     b.HasIndex("OrderStateID");
 
@@ -824,16 +923,16 @@ namespace FoodOrderDAL.Migrations
                         new
                         {
                             ID = 1,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4466),
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4467),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8788),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8788),
                             PaymentName = "Kredi/Banka Kartı",
                             Status = true
                         },
                         new
                         {
                             ID = 2,
-                            AddedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4468),
-                            ModifiedDate = new DateTime(2024, 4, 27, 19, 39, 46, 501, DateTimeKind.Local).AddTicks(4469),
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8791),
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8791),
                             PaymentName = "Nakit",
                             Status = true
                         });
@@ -920,8 +1019,8 @@ namespace FoodOrderDAL.Migrations
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("PreparationTime")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("PreparationTime")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -941,6 +1040,32 @@ namespace FoodOrderDAL.Migrations
                     b.HasIndex("CategoryID");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9435),
+                            CategoryID = 1,
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9435),
+                            PreparationTime = 5,
+                            Price = 15m,
+                            ProductDetailID = 0,
+                            ProductName = "Patates",
+                            Status = true
+                        },
+                        new
+                        {
+                            ID = 2,
+                            AddedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9438),
+                            CategoryID = 2,
+                            ModifiedDate = new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9438),
+                            PreparationTime = 0,
+                            Price = 10m,
+                            ProductDetailID = 0,
+                            ProductName = "Kola",
+                            Status = true
+                        });
                 });
 
             modelBuilder.Entity("FoodOrderDomain.Stock", b =>
@@ -1053,6 +1178,17 @@ namespace FoodOrderDAL.Migrations
                     b.Navigation("City");
                 });
 
+            modelBuilder.Entity("FoodOrderDomain.Customers", b =>
+                {
+                    b.HasOne("FoodOrderDomain.Genders", "Gender")
+                        .WithMany("Customers")
+                        .HasForeignKey("GenderID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Gender");
+                });
+
             modelBuilder.Entity("FoodOrderDomain.OrderDetails", b =>
                 {
                     b.HasOne("FoodOrderDomain.Menu", "Menu")
@@ -1061,15 +1197,15 @@ namespace FoodOrderDAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FoodOrderDomain.Orders", "Order")
+                    b.HasOne("FoodOrderDomain.Products", "Product")
                         .WithMany()
-                        .HasForeignKey("OrderID")
+                        .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Menu");
 
-                    b.Navigation("Order");
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("FoodOrderDomain.Orders", b =>
@@ -1087,6 +1223,10 @@ namespace FoodOrderDAL.Migrations
                     b.HasOne("FoodOrderDomain.Customers", "Customer")
                         .WithMany("Orders")
                         .HasForeignKey("CustomerID");
+
+                    b.HasOne("FoodOrderDomain.OrderDetails", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("OrderDetailsID");
 
                     b.HasOne("FoodOrderDomain.OrderStates", "OrderState")
                         .WithMany("Orders")
@@ -1219,10 +1359,20 @@ namespace FoodOrderDAL.Migrations
                     b.Navigation("Orders");
                 });
 
+            modelBuilder.Entity("FoodOrderDomain.Genders", b =>
+                {
+                    b.Navigation("Customers");
+                });
+
             modelBuilder.Entity("FoodOrderDomain.Menu", b =>
                 {
                     b.Navigation("Stock")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("FoodOrderDomain.OrderDetails", b =>
+                {
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("FoodOrderDomain.OrderStates", b =>

@@ -33,7 +33,6 @@
             txtUserName = new TextBox();
             txtPassword = new TextBox();
             btnLogin = new Button();
-            btnRegister = new Button();
             SuspendLayout();
             // 
             // lblUserName
@@ -70,20 +69,19 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(204, 217);
+            btnLogin.Location = new Point(206, 248);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(134, 55);
             btnLogin.TabIndex = 4;
             btnLogin.Text = "Giriş Yap";
             btnLogin.UseVisualStyleBackColor = true;
-            btnLogin.Click += button1_Click;
+            btnLogin.Click += btnLogin_Click;
             // 
             // UserLogin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(544, 391);
-            Controls.Add(btnRegister);
             Controls.Add(btnLogin);
             Controls.Add(txtPassword);
             Controls.Add(txtUserName);
@@ -91,6 +89,7 @@
             Controls.Add(lblUserName);
             Name = "UserLogin";
             Text = "UserLogin";
+            Load += UserLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -102,6 +101,5 @@
         private TextBox txtUserName;
         private TextBox txtPassword;
         private Button btnLogin;
-        private Button btnRegister;
     }
 }

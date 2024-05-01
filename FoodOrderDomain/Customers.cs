@@ -10,7 +10,8 @@ namespace FoodOrderDomain
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public bool Gender { get; set; }
+        public Genders Gender { get; set; }
+        public int GenderID { get; set; }
         public DateTime BirthDate { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }

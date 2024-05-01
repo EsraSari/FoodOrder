@@ -30,8 +30,14 @@ namespace FoodOrderDAL.SeedData
                      new Counties { ID = 13, CountyName = "Kartal", CityID = 1, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
                      new Counties { ID = 14, CountyName = "Şile", CityID = 1, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
                      new Counties { ID = 15, CountyName = "Çatalca", CityID = 1, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
-                     new Counties { ID = 16, CountyName = "Adalar", CityID = 1, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now }
-                 );  
+                     new Counties { ID = 16, CountyName = "Adalar", CityID = 1, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
+
+
+                     new Counties { ID = 17, CountyName = "Altındağ", CityID = 2, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
+                     new Counties { ID = 18, CountyName = "Ayaş", CityID = 2, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
+                     new Counties { ID = 19, CountyName = "Bala", CityID = 2, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now }
+
+                );  
         }
     }
 }

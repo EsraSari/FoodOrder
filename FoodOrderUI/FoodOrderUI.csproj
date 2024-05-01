@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FoodOrderBL\FoodOrderBL.csproj" />
     <ProjectReference Include="..\FoodOrderDAL\FoodOrderDAL.csproj" />
     <ProjectReference Include="..\FoodOrderDomain\FoodOrderDomain.csproj" />
   </ItemGroup>

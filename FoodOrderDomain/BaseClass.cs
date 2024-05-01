@@ -9,8 +9,8 @@ namespace FoodOrderDomain
     public class BaseClass
     {
         public int ID { get; set; }
-        public bool Status { get; set; }
-        public DateTime AddedDate { get; set; }
-        public DateTime ModifiedDate { get; set; }
+        public bool Status { get; set; } = true;
+        public DateTime AddedDate { get; set; } = DateTime.Now;
+        public DateTime ModifiedDate { get; set; } = DateTime.Now;
     }
 }

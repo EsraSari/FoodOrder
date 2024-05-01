@@ -17,18 +17,27 @@ namespace FoodOrderDAL.Context
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Customers>()
+            .HasIndex(x => x.UserName) // Benzersiz olmasını istediğiniz özelliği belirtin
+            .IsUnique();
+
             modelBuilder.ApplyConfiguration(new ProductMapping());
             modelBuilder.ApplyConfiguration(new CityMapping());
             modelBuilder.ApplyConfiguration(new ContactInfoMapping());
             modelBuilder.ApplyConfiguration(new MenuMapping());
             modelBuilder.ApplyConfiguration(new OrderMapping());
             modelBuilder.ApplyConfiguration(new AddressMapping());
+            modelBuilder.ApplyConfiguration(new GenderMapping());
 
             modelBuilder.ApplyConfiguration(new SeedOrderState());
             modelBuilder.ApplyConfiguration(new SeedPaymentMethods());
             modelBuilder.ApplyConfiguration(new SeedCities());
             modelBuilder.ApplyConfiguration(new SeedCounties());
             modelBuilder.ApplyConfiguration(new SeedCountries());
+            modelBuilder.ApplyConfiguration(new SeedGenders());
+            modelBuilder.ApplyConfiguration(new SeedCategories());
+            modelBuilder.ApplyConfiguration(new SeedProducts());
+
 
             base.OnModelCreating(modelBuilder);
         }
@@ -51,7 +60,7 @@ namespace FoodOrderDAL.Context
         public DbSet<Orders> Orders { get; set; }
         public DbSet<OrderStates> OrderStates{ get; set; }
 
-
+        public DbSet<Genders> Genders{ get; set; }
 
 
     }

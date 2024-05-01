@@ -16,14 +16,14 @@ namespace FoodOrderDAL.SeedData
             builder.HasData
                  (
                      new Cities { ID = 1, CityName = "İstanbul", CountryID = 1, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
-                     new Cities { ID = 2, CityName = "Ankara", CountryID = 6, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
-                     new Cities { ID = 3, CityName = "İzmir", CountryID = 6, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
-                     new Cities { ID = 4, CityName = "Bursa", CountryID = 6, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
-                     new Cities { ID = 5, CityName = "Antalya", CountryID = 6, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
-                     new Cities { ID = 6, CityName = "Adana", CountryID = 6, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
-                     new Cities { ID = 7, CityName = "Konya", CountryID = 6, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
-                     new Cities { ID = 8, CityName = "Kayseri", CountryID = 6, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
-                     new Cities { ID = 9, CityName = "Mersin", CountryID = 6, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now }
+                     new Cities { ID = 2, CityName = "Ankara", CountryID = 1, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
+                     new Cities { ID = 3, CityName = "İzmir", CountryID = 1, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
+                     new Cities { ID = 4, CityName = "Bursa", CountryID = 1, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
+                     new Cities { ID = 5, CityName = "Antalya", CountryID = 1, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
+                     new Cities { ID = 6, CityName = "Adana", CountryID = 1, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
+                     new Cities { ID = 7, CityName = "Konya", CountryID = 1, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
+                     new Cities { ID = 8, CityName = "Kayseri", CountryID = 1, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now },
+                     new Cities { ID = 9, CityName = "Mersin", CountryID = 1, Status = true, AddedDate = DateTime.Now, ModifiedDate = DateTime.Now }
                  );
         }
     }

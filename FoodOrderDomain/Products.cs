@@ -14,7 +14,7 @@ namespace FoodOrderDomain
         public Categories Category { get; set; }
         public Stock Stock { get; set; }
         public decimal Price { get; set; }
-        public DateTime PreparationTime { get; set; }
+        public int PreparationTime { get; set; }
 
         [ForeignKey("ProductDetails")]
         public int ProductDetailID { get; set; }

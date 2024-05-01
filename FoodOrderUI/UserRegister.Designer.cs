@@ -47,7 +47,7 @@
             grpUserInfo = new GroupBox();
             lblAddressDetails = new Label();
             cbCounties = new ComboBox();
-            textBox1 = new TextBox();
+            txtAddressDetails = new TextBox();
             İlçe = new Label();
             btnRegister = new Button();
             grpUserInfo.SuspendLayout();
@@ -158,6 +158,7 @@
             cbCountries.Name = "cbCountries";
             cbCountries.Size = new Size(151, 28);
             cbCountries.TabIndex = 14;
+            cbCountries.SelectedIndexChanged += cbCountries_SelectedIndexChanged;
             // 
             // lblCountry
             // 
@@ -184,12 +185,13 @@
             cbCities.Name = "cbCities";
             cbCities.Size = new Size(151, 28);
             cbCities.TabIndex = 17;
+            cbCities.SelectedIndexChanged += cbCities_SelectedIndexChanged;
             // 
             // grpUserInfo
             // 
             grpUserInfo.Controls.Add(lblAddressDetails);
             grpUserInfo.Controls.Add(cbCounties);
-            grpUserInfo.Controls.Add(textBox1);
+            grpUserInfo.Controls.Add(txtAddressDetails);
             grpUserInfo.Controls.Add(İlçe);
             grpUserInfo.Controls.Add(dtBirthDate);
             grpUserInfo.Controls.Add(cbCities);
@@ -231,13 +233,13 @@
             cbCounties.Size = new Size(151, 28);
             cbCounties.TabIndex = 20;
             // 
-            // textBox1
+            // txtAddressDetails
             // 
-            textBox1.Location = new Point(95, 594);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(328, 170);
-            textBox1.TabIndex = 19;
+            txtAddressDetails.Location = new Point(95, 594);
+            txtAddressDetails.Multiline = true;
+            txtAddressDetails.Name = "txtAddressDetails";
+            txtAddressDetails.Size = new Size(328, 170);
+            txtAddressDetails.TabIndex = 19;
             // 
             // İlçe
             // 
@@ -294,7 +296,7 @@
         private GroupBox grpUserInfo;
         private Label lblAddressDetails;
         private ComboBox cbCounties;
-        private TextBox textBox1;
+        private TextBox txtAddressDetails;
         private Label İlçe;
         private Button btnRegister;
     }
