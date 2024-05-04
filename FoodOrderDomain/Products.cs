@@ -19,7 +19,9 @@ namespace FoodOrderDomain
         [ForeignKey("ProductDetails")]
         public int ProductDetailID { get; set; }
         public ProductDetails ProductDetail { get; set; }
-        
+
+        public List<OrderDetails> OrderDetails { get; set; }
+
 
     }
 }

@@ -40,8 +40,6 @@
             cbKetchup = new CheckBox();
             cbMayonnaise = new CheckBox();
             lblOrderDetails = new Label();
-            nuAmount = new NumericUpDown();
-            lblAmount = new Label();
             lblTotal = new Label();
             lblTotalPrice = new Label();
             btnOrderConfirm = new Button();
@@ -71,7 +69,13 @@
             lblProduct = new Label();
             lbProduct = new ListBox();
             gpOrder = new GroupBox();
-            lbOrderID = new ListBox();
+            lstOrderItems = new ListView();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
+            nuMenuAmount = new NumericUpDown();
+            lblMenuAmount = new Label();
+            nuProductAmount = new NumericUpDown();
+            lblProductAmount = new Label();
             lbOrders = new ListBox();
             btnOrderAdd = new Button();
             cbMenus = new ComboBox();
@@ -80,7 +84,6 @@
             contextMenuStrip1.SuspendLayout();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbProductPic).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nuAmount).BeginInit();
             gpProductAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nuPrepTime).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nuPrice).BeginInit();
@@ -88,6 +91,8 @@
             ((System.ComponentModel.ISupportInitialize)nuMenuPrice).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nuPrepTimeMenu).BeginInit();
             gpOrder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nuMenuAmount).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nuProductAmount).BeginInit();
             SuspendLayout();
             // 
             // siparişYönetimiToolStripMenuItem
@@ -153,20 +158,20 @@
             // cbKetchup
             // 
             cbKetchup.AutoSize = true;
-            cbKetchup.Location = new Point(15, 294);
+            cbKetchup.Location = new Point(15, 331);
             cbKetchup.Name = "cbKetchup";
             cbKetchup.Size = new Size(77, 24);
-            cbKetchup.TabIndex = 4;
+            cbKetchup.TabIndex = 3;
             cbKetchup.Text = "Ketçap";
             cbKetchup.UseVisualStyleBackColor = true;
             // 
             // cbMayonnaise
             // 
             cbMayonnaise.AutoSize = true;
-            cbMayonnaise.Location = new Point(15, 338);
+            cbMayonnaise.Location = new Point(15, 375);
             cbMayonnaise.Name = "cbMayonnaise";
             cbMayonnaise.Size = new Size(91, 24);
-            cbMayonnaise.TabIndex = 5;
+            cbMayonnaise.TabIndex = 4;
             cbMayonnaise.Text = "Mayonez";
             cbMayonnaise.UseVisualStyleBackColor = true;
             // 
@@ -178,22 +183,6 @@
             lblOrderDetails.Size = new Size(50, 20);
             lblOrderDetails.TabIndex = 7;
             lblOrderDetails.Text = "Sepet:";
-            // 
-            // nuAmount
-            // 
-            nuAmount.Location = new Point(79, 378);
-            nuAmount.Name = "nuAmount";
-            nuAmount.Size = new Size(150, 27);
-            nuAmount.TabIndex = 8;
-            // 
-            // lblAmount
-            // 
-            lblAmount.AutoSize = true;
-            lblAmount.Location = new Point(13, 378);
-            lblAmount.Name = "lblAmount";
-            lblAmount.Size = new Size(41, 20);
-            lblAmount.TabIndex = 9;
-            lblAmount.Text = "Adet";
             // 
             // lblTotal
             // 
@@ -221,6 +210,7 @@
             btnOrderConfirm.TabIndex = 12;
             btnOrderConfirm.Text = "Siparişi Onayla";
             btnOrderConfirm.UseVisualStyleBackColor = true;
+            btnOrderConfirm.Click += btnOrderConfirm_Click;
             // 
             // gpProductAdd
             // 
@@ -461,7 +451,11 @@
             // 
             // gpOrder
             // 
-            gpOrder.Controls.Add(lbOrderID);
+            gpOrder.Controls.Add(lstOrderItems);
+            gpOrder.Controls.Add(nuMenuAmount);
+            gpOrder.Controls.Add(lblMenuAmount);
+            gpOrder.Controls.Add(nuProductAmount);
+            gpOrder.Controls.Add(lblProductAmount);
             gpOrder.Controls.Add(lbOrders);
             gpOrder.Controls.Add(btnOrderAdd);
             gpOrder.Controls.Add(cbMenus);
@@ -474,9 +468,7 @@
             gpOrder.Controls.Add(lblTotal);
             gpOrder.Controls.Add(cbKetchup);
             gpOrder.Controls.Add(cbMayonnaise);
-            gpOrder.Controls.Add(nuAmount);
             gpOrder.Controls.Add(lblOrderDetails);
-            gpOrder.Controls.Add(lblAmount);
             gpOrder.Location = new Point(34, 36);
             gpOrder.Name = "gpOrder";
             gpOrder.Size = new Size(723, 577);
@@ -484,14 +476,55 @@
             gpOrder.TabStop = false;
             gpOrder.Text = "Sipariş";
             // 
-            // lbOrderID
+            // lstOrderItems
             // 
-            lbOrderID.FormattingEnabled = true;
-            lbOrderID.Location = new Point(468, 76);
-            lbOrderID.Name = "lbOrderID";
-            lbOrderID.Size = new Size(167, 144);
-            lbOrderID.TabIndex = 18;
-            lbOrderID.Visible = false;
+            lstOrderItems.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
+            lstOrderItems.Location = new Point(300, 99);
+            lstOrderItems.Name = "lstOrderItems";
+            lstOrderItems.Size = new Size(129, 237);
+            lstOrderItems.TabIndex = 23;
+            lstOrderItems.UseCompatibleStateImageBehavior = false;
+            lstOrderItems.View = View.Details;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "TypeId";
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "ItemId";
+            // 
+            // nuMenuAmount
+            // 
+            nuMenuAmount.Location = new Point(145, 274);
+            nuMenuAmount.Name = "nuMenuAmount";
+            nuMenuAmount.Size = new Size(77, 27);
+            nuMenuAmount.TabIndex = 21;
+            // 
+            // lblMenuAmount
+            // 
+            lblMenuAmount.AutoSize = true;
+            lblMenuAmount.Location = new Point(15, 276);
+            lblMenuAmount.Name = "lblMenuAmount";
+            lblMenuAmount.Size = new Size(90, 20);
+            lblMenuAmount.TabIndex = 22;
+            lblMenuAmount.Text = "Menu Adedi";
+            // 
+            // nuProductAmount
+            // 
+            nuProductAmount.Location = new Point(145, 188);
+            nuProductAmount.Name = "nuProductAmount";
+            nuProductAmount.Size = new Size(77, 27);
+            nuProductAmount.TabIndex = 19;
+            // 
+            // lblProductAmount
+            // 
+            lblProductAmount.AutoSize = true;
+            lblProductAmount.Location = new Point(15, 190);
+            lblProductAmount.Name = "lblProductAmount";
+            lblProductAmount.Size = new Size(84, 20);
+            lblProductAmount.TabIndex = 20;
+            lblProductAmount.Text = "Ürün Adedi";
             // 
             // lbOrders
             // 
@@ -514,7 +547,7 @@
             // cbMenus
             // 
             cbMenus.FormattingEnabled = true;
-            cbMenus.Location = new Point(81, 197);
+            cbMenus.Location = new Point(81, 232);
             cbMenus.Name = "cbMenus";
             cbMenus.Size = new Size(151, 28);
             cbMenus.TabIndex = 15;
@@ -522,7 +555,7 @@
             // lblMenus
             // 
             lblMenus.AutoSize = true;
-            lblMenus.Location = new Point(15, 205);
+            lblMenus.Location = new Point(9, 232);
             lblMenus.Name = "lblMenus";
             lblMenus.Size = new Size(63, 20);
             lblMenus.TabIndex = 14;
@@ -554,7 +587,6 @@
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbProductPic).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nuAmount).EndInit();
             gpProductAdd.ResumeLayout(false);
             gpProductAdd.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nuPrepTime).EndInit();
@@ -565,6 +597,8 @@
             ((System.ComponentModel.ISupportInitialize)nuPrepTimeMenu).EndInit();
             gpOrder.ResumeLayout(false);
             gpOrder.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nuMenuAmount).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nuProductAmount).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -581,8 +615,6 @@
         private CheckBox cbKetchup;
         private CheckBox cbMayonnaise;
         private Label lblOrderDetails;
-        private NumericUpDown nuAmount;
-        private Label lblAmount;
         private Label lblTotal;
         private Label lblTotalPrice;
         private Button btnOrderConfirm;
@@ -615,9 +647,15 @@
         private ComboBox cbProductList;
         private Button btnMenuProduct;
         private ListBox lbSelectedItemIds;
-        private ListBox lbOrderID;
         private ListBox lbOrders;
         private Label lblMenuPrice;
         private NumericUpDown nuMenuPrice;
+        private NumericUpDown nuMenuAmount;
+        private Label lblMenuAmount;
+        private NumericUpDown nuProductAmount;
+        private Label lblProductAmount;
+        private ListView lstOrderItems;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
     }
 }

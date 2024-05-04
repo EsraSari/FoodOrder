@@ -13,5 +13,6 @@ namespace FoodOrderDomain
         public bool IsAllergen { get; set; }// burada menüye eklenen ürünlerin totali olarak yansıtıcaz.
         public decimal Price { get; set; }// burada menüye eklenen ürünlerin totali olarak yansıtıcaz.
         public Stock Stock { get; set; }
+        public List<OrderDetails> OrderDetails{ get; set; }
     }
 }

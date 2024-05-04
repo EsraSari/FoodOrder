@@ -14,6 +14,8 @@ namespace FoodOrderDomain
         public int ItemID { get; set; }
         public Menu Menu { get; set; }
         public Products Product{ get; set; }
-        public List<Orders> Orders { get; set; }
+        public Orders Order { get; set; }
+        public int OrderID { get; set; }
+        
     }
 }

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FoodOrderDAL.Migrations
 {
     /// <inheritdoc />
-    public partial class InitFoodOrders : Migration
+    public partial class InitFoodOrder : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -200,37 +200,6 @@ namespace FoodOrderDAL.Migrations
                         name: "FK_Customers_Genders_GenderID",
                         column: x => x.GenderID,
                         principalTable: "Genders",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "OrderDetails",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ItemType = table.Column<int>(type: "int", nullable: false),
-                    ItemID = table.Column<int>(type: "int", nullable: false),
-                    MenuID = table.Column<int>(type: "int", nullable: false),
-                    ProductID = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<bool>(type: "bit", nullable: false),
-                    AddedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_OrderDetails", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_OrderDetails_Menu_MenuID",
-                        column: x => x.MenuID,
-                        principalTable: "Menu",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_OrderDetails_Products_ProductID",
-                        column: x => x.ProductID,
-                        principalTable: "Products",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -428,7 +397,6 @@ namespace FoodOrderDAL.Migrations
                     PaymentStatus = table.Column<bool>(type: "bit", nullable: false),
                     PaymentMethodID = table.Column<int>(type: "int", nullable: false),
                     OrderNotes = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    OrderDetailsID = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<bool>(type: "bit", nullable: false),
                     AddedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -453,11 +421,6 @@ namespace FoodOrderDAL.Migrations
                         principalTable: "Customers",
                         principalColumn: "ID");
                     table.ForeignKey(
-                        name: "FK_Orders_OrderDetails_OrderDetailsID",
-                        column: x => x.OrderDetailsID,
-                        principalTable: "OrderDetails",
-                        principalColumn: "ID");
-                    table.ForeignKey(
                         name: "FK_Orders_OrderStates_OrderStateID",
                         column: x => x.OrderStateID,
                         principalTable: "OrderStates",
@@ -471,13 +434,49 @@ namespace FoodOrderDAL.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "OrderDetails",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ItemType = table.Column<int>(type: "int", nullable: false),
+                    ItemID = table.Column<int>(type: "int", nullable: false),
+                    OrderID = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<bool>(type: "bit", nullable: false),
+                    AddedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderDetails", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_OrderDetails_Menu_ItemID",
+                        column: x => x.ItemID,
+                        principalTable: "Menu",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrderDetails_Orders_OrderID",
+                        column: x => x.OrderID,
+                        principalTable: "Orders",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrderDetails_Products_ItemID",
+                        column: x => x.ItemID,
+                        principalTable: "Products",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "ID", "AddedDate", "CategoryName", "ModifiedDate", "Status" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9341), "Yiyecek", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9342), true },
-                    { 2, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9343), "İçecek", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9344), true }
+                    { 1, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6645), "Yiyecek", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6645), true },
+                    { 2, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6647), "İçecek", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6647), true }
                 });
 
             migrationBuilder.InsertData(
@@ -485,17 +484,17 @@ namespace FoodOrderDAL.Migrations
                 columns: new[] { "ID", "AddedDate", "CountryName", "ModifiedDate", "Status" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9134), "Türkiye", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9135), true },
-                    { 2, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9137), "Almanya", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9137), true },
-                    { 3, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9139), "Fransa", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9140), true },
-                    { 4, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9142), "İngiltere", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9142), true },
-                    { 5, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9144), "İtalya", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9145), true },
-                    { 6, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9146), "İspanya", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9147), true },
-                    { 7, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9148), "Türkiye", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9149), true },
-                    { 8, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9151), "Ukrayna", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9151), true },
-                    { 9, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9153), "Polonya", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9153), true },
-                    { 10, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9155), "Romanya", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9155), true },
-                    { 11, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9157), "Hollanda", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9158), true }
+                    { 1, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6448), "Türkiye", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6448), true },
+                    { 2, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6452), "Almanya", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6452), true },
+                    { 3, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6454), "Fransa", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6455), true },
+                    { 4, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6456), "İngiltere", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6457), true },
+                    { 5, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6459), "İtalya", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6459), true },
+                    { 6, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6460), "İspanya", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6461), true },
+                    { 7, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6462), "Türkiye", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6463), true },
+                    { 8, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6464), "Ukrayna", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6465), true },
+                    { 9, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6467), "Polonya", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6467), true },
+                    { 10, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6469), "Romanya", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6469), true },
+                    { 11, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6471), "Hollanda", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6471), true }
                 });
 
             migrationBuilder.InsertData(
@@ -503,8 +502,8 @@ namespace FoodOrderDAL.Migrations
                 columns: new[] { "ID", "AddedDate", "Gender", "ModifiedDate", "Status" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9246), "Kadın", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9246), true },
-                    { 2, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9248), "Erkek", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9249), true }
+                    { 1, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6557), "Kadın", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6558), true },
+                    { 2, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6560), "Erkek", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6560), true }
                 });
 
             migrationBuilder.InsertData(
@@ -512,9 +511,9 @@ namespace FoodOrderDAL.Migrations
                 columns: new[] { "ID", "AddedDate", "ModifiedDate", "OrderState", "Status" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8553), new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8553), "Hazırlanıyor", true },
-                    { 2, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8555), new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8556), "Teslim Edildi", true },
-                    { 3, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8558), new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8558), "İptal Edildi", true }
+                    { 1, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(5810), new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(5811), "Hazırlanıyor", true },
+                    { 2, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(5813), new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(5814), "Teslim Edildi", true },
+                    { 3, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(5815), new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(5816), "İptal Edildi", true }
                 });
 
             migrationBuilder.InsertData(
@@ -522,8 +521,8 @@ namespace FoodOrderDAL.Migrations
                 columns: new[] { "ID", "AddedDate", "ModifiedDate", "PaymentName", "Status" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8788), new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8788), "Kredi/Banka Kartı", true },
-                    { 2, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8791), new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8791), "Nakit", true }
+                    { 1, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6069), new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6070), "Kredi/Banka Kartı", true },
+                    { 2, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6072), new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6073), "Nakit", true }
                 });
 
             migrationBuilder.InsertData(
@@ -531,15 +530,15 @@ namespace FoodOrderDAL.Migrations
                 columns: new[] { "ID", "AddedDate", "CityName", "CountryID", "ModifiedDate", "Status" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8877), "İstanbul", 1, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8877), true },
-                    { 2, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8880), "Ankara", 1, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8880), true },
-                    { 3, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8882), "İzmir", 1, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8882), true },
-                    { 4, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8884), "Bursa", 1, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8884), true },
-                    { 5, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8886), "Antalya", 1, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8887), true },
-                    { 6, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8888), "Adana", 1, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8889), true },
-                    { 7, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8891), "Konya", 1, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8891), true },
-                    { 8, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8893), "Kayseri", 1, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8893), true },
-                    { 9, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8895), "Mersin", 1, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8895), true }
+                    { 1, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6158), "İstanbul", 1, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6158), true },
+                    { 2, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6160), "Ankara", 1, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6161), true },
+                    { 3, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6162), "İzmir", 1, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6163), true },
+                    { 4, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6165), "Bursa", 1, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6165), true },
+                    { 5, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6167), "Antalya", 1, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6167), true },
+                    { 6, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6169), "Adana", 1, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6169), true },
+                    { 7, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6171), "Konya", 1, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6171), true },
+                    { 8, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6173), "Kayseri", 1, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6174), true },
+                    { 9, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6175), "Mersin", 1, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6176), true }
                 });
 
             migrationBuilder.InsertData(
@@ -547,8 +546,10 @@ namespace FoodOrderDAL.Migrations
                 columns: new[] { "ID", "AddedDate", "CategoryID", "ModifiedDate", "PreparationTime", "Price", "ProductDetailID", "ProductName", "Status" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9435), 1, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9435), 5, 15m, 0, "Patates", true },
-                    { 2, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9438), 2, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9438), 0, 10m, 0, "Kola", true }
+                    { 1, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6730), 1, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6730), 5, 15m, 0, "Patates", true },
+                    { 2, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6732), 2, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6733), 0, 10m, 0, "Kola", true },
+                    { 3, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6735), 1, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6736), 0, 0m, 0, "Ketçap", true },
+                    { 4, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6738), 1, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6738), 0, 0m, 0, "Mayonez", true }
                 });
 
             migrationBuilder.InsertData(
@@ -556,25 +557,25 @@ namespace FoodOrderDAL.Migrations
                 columns: new[] { "ID", "AddedDate", "CityID", "CountyName", "ModifiedDate", "Status" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8989), 1, "Kağıthane", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8990), true },
-                    { 2, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8992), 1, "Şişli", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8992), true },
-                    { 3, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8994), 1, "Beşiktaş", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8995), true },
-                    { 4, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8997), 1, "Beyoğlu", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8997), true },
-                    { 5, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8999), 1, "Kadıköy", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(8999), true },
-                    { 6, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9001), 1, "Üsküdar", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9001), true },
-                    { 7, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9003), 1, "Fatih", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9003), true },
-                    { 8, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9005), 1, "Bakırköy", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9006), true },
-                    { 9, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9007), 1, "Maltepe", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9008), true },
-                    { 10, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9009), 1, "Ataşehir", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9010), true },
-                    { 11, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9011), 1, "Büyükçekmece", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9012), true },
-                    { 12, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9014), 1, "Sarıyer", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9014), true },
-                    { 13, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9016), 1, "Kartal", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9016), true },
-                    { 14, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9018), 1, "Şile", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9018), true },
-                    { 15, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9020), 1, "Çatalca", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9020), true },
-                    { 16, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9022), 1, "Adalar", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9023), true },
-                    { 17, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9024), 2, "Altındağ", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9025), true },
-                    { 18, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9026), 2, "Ayaş", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9027), true },
-                    { 19, new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9029), 2, "Bala", new DateTime(2024, 5, 1, 16, 40, 15, 557, DateTimeKind.Local).AddTicks(9029), true }
+                    { 1, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6292), 1, "Kağıthane", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6292), true },
+                    { 2, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6295), 1, "Şişli", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6295), true },
+                    { 3, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6297), 1, "Beşiktaş", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6297), true },
+                    { 4, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6299), 1, "Beyoğlu", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6299), true },
+                    { 5, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6301), 1, "Kadıköy", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6302), true },
+                    { 6, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6303), 1, "Üsküdar", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6304), true },
+                    { 7, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6328), 1, "Fatih", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6328), true },
+                    { 8, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6330), 1, "Bakırköy", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6331), true },
+                    { 9, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6332), 1, "Maltepe", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6333), true },
+                    { 10, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6334), 1, "Ataşehir", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6335), true },
+                    { 11, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6336), 1, "Büyükçekmece", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6337), true },
+                    { 12, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6338), 1, "Sarıyer", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6339), true },
+                    { 13, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6340), 1, "Kartal", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6341), true },
+                    { 14, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6343), 1, "Şile", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6343), true },
+                    { 15, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6345), 1, "Çatalca", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6345), true },
+                    { 16, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6347), 1, "Adalar", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6348), true },
+                    { 17, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6349), 2, "Altındağ", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6350), true },
+                    { 18, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6351), 2, "Ayaş", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6352), true },
+                    { 19, new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6353), 2, "Bala", new DateTime(2024, 5, 1, 21, 27, 30, 686, DateTimeKind.Local).AddTicks(6354), true }
                 });
 
             migrationBuilder.CreateIndex(
@@ -629,14 +630,14 @@ namespace FoodOrderDAL.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderDetails_MenuID",
+                name: "IX_OrderDetails_ItemID",
                 table: "OrderDetails",
-                column: "MenuID");
+                column: "ItemID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderDetails_ProductID",
+                name: "IX_OrderDetails_OrderID",
                 table: "OrderDetails",
-                column: "ProductID");
+                column: "OrderID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_AddressID",
@@ -652,11 +653,6 @@ namespace FoodOrderDAL.Migrations
                 name: "IX_Orders_CustomerID",
                 table: "Orders",
                 column: "CustomerID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Orders_OrderDetailsID",
-                table: "Orders",
-                column: "OrderDetailsID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_OrderStateID",
@@ -706,7 +702,7 @@ namespace FoodOrderDAL.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Orders");
+                name: "OrderDetails");
 
             migrationBuilder.DropTable(
                 name: "ProductDetails");
@@ -718,19 +714,28 @@ namespace FoodOrderDAL.Migrations
                 name: "Stocks");
 
             migrationBuilder.DropTable(
+                name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "Menu");
+
+            migrationBuilder.DropTable(
+                name: "Products");
+
+            migrationBuilder.DropTable(
                 name: "AddressInformations");
 
             migrationBuilder.DropTable(
                 name: "ContactInformations");
 
             migrationBuilder.DropTable(
-                name: "OrderDetails");
-
-            migrationBuilder.DropTable(
                 name: "OrderStates");
 
             migrationBuilder.DropTable(
                 name: "PaymentMethods");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Counties");
@@ -742,19 +747,10 @@ namespace FoodOrderDAL.Migrations
                 name: "Customers");
 
             migrationBuilder.DropTable(
-                name: "Menu");
-
-            migrationBuilder.DropTable(
-                name: "Products");
-
-            migrationBuilder.DropTable(
                 name: "Cities");
 
             migrationBuilder.DropTable(
                 name: "Genders");
-
-            migrationBuilder.DropTable(
-                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Countries");

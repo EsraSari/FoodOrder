@@ -21,6 +21,7 @@ namespace FoodOrderDomain
         public int PaymentMethodID { get; set; } // kredi kart , nakit
         public PaymentMethods PaymentMethod { get; set; }
         public string OrderNotes { get; set; } // siparişle ilgili not.
+        public List<OrderDetails> OrderDetails { get; set; }
     }
 
 }

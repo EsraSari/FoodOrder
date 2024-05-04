@@ -37,6 +37,10 @@ namespace FoodOrderDAL.Context
                .WithMany(x => x.Orders)
                .HasForeignKey(x => x.CustomerID);
 
+            builder.HasMany(x => x.OrderDetails)
+               .WithOne(x => x.Order)
+               .HasForeignKey(x => x.OrderID);
+
         }
     }
 }

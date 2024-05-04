@@ -39,6 +39,9 @@ namespace FoodOrderUI
             cbProducts.DisplayMember = "Value";
             cbProducts.ValueMember = "Key";
             cbProducts.DataSource = new BindingSource(products, null);
+
+            cbProducts.SelectedIndex = -1;
+            cbMenus.SelectedIndex = -1;
         }
 
         private void FoodOrderMenu_Load(object sender, EventArgs e)
@@ -94,28 +97,90 @@ namespace FoodOrderUI
 
         private void btnOrderAdd_Click(object sender, EventArgs e)
         {
-            lbOrders.Items.Add(cbProducts.Text);
-            lbOrders.Items.Add(cbMenus.Text);
-            lbOrderID.Items.Add((int)cbProducts.SelectedValue);
-            lbOrderID.Items.Add((int)cbMenus.SelectedValue);
-            TotalPriceCalculate();
-        }
-        private void TotalPriceCalculate()
-        {
-            decimal total = 0;
-            for (int i = 0; i < lbOrderID.Items.Count; i++)
+            int itemType = 1;
+            int productId;
+            if (cbKetchup.Checked)
             {
-                int itemID = (int)lbOrderID.Items[i];
-                var productPrices = (from pr in db.Products
-                                     where pr.ID == itemID
-                                     select pr.Price).FirstOrDefault();
-                total += productPrices;
-                var menuPrices = (from m in db.Menu
-                                  where m.ID == itemID
-                                  select m.Price).FirstOrDefault();
-                total += menuPrices;
+                productId = 3;
+                lbOrders.Items.Add(cbKetchup.Text);
+                ListViewItem ketchupItem = new ListViewItem(itemType.ToString());
+                ketchupItem.SubItems.Add(productId.ToString());
+                lstOrderItems.Items.Add(ketchupItem);
             }
-            lblTotalPrice.Text = total.ToString();
+
+            if (cbMayonnaise.Checked)
+            {
+               productId = 4;
+                lbOrders.Items.Add(cbMayonnaise.Text);
+                ListViewItem mayonnaiseItem = new ListViewItem(itemType.ToString());
+                mayonnaiseItem.SubItems.Add(productId.ToString());
+                lstOrderItems.Items.Add(mayonnaiseItem);
+            }
+            if (cbProducts.Text != String.Empty)
+            {
+                string productText = cbProducts.Text + " " + "Adet: " + nuProductAmount.Text;
+                lbOrders.Items.Add(productText);
+
+                if (cbProducts.SelectedValue != null)
+                {
+                    productId = (int)cbProducts.SelectedValue;
+                    itemType = 1;
+                    ListViewItem item = new ListViewItem(itemType.ToString());
+                    item.SubItems.Add(productId.ToString());
+                    lstOrderItems.Items.Add(item);
+                    
+                }
+            }
+
+            if (cbMenus.Text != String.Empty)
+            {
+                string menuText = cbMenus.Text + " " + "Adet: " + nuMenuAmount.Text;
+                lbOrders.Items.Add(menuText);
+
+                if (cbMenus.SelectedValue != null)
+                {
+                    int menuId = (int)cbMenus.SelectedValue;
+                    itemType = 2;
+                    ListViewItem item = new ListViewItem(itemType.ToString());
+                    item.SubItems.Add(menuId.ToString());
+                    lstOrderItems.Items.Add(item);
+                }
+            }
+
+            lblTotalPrice.Text = TotalPriceCalculate().ToString();
+            cbProducts.SelectedIndex = -1;
+            cbMenus.SelectedIndex = -1;
+            nuMenuAmount.Value = 0;
+            nuProductAmount.Value = 0;
+        }
+        private decimal TotalPriceCalculate()
+        {
+            int productAmount = (int)nuProductAmount.Value;
+            int menuAmount = (int)nuMenuAmount.Value;
+            decimal total = 0;
+
+            for (int i = 0; i < lstOrderItems.Items.Count; i++)
+            {
+                int itemType = int.Parse(lstOrderItems.Items[i].SubItems[0].Text); 
+
+                if (itemType == 1)
+                {
+                    int itemId = int.Parse(lstOrderItems.Items[i].Text);
+                    var productPrices = (from pr in db.Products
+                                         where pr.ID == itemId
+                                         select pr.Price).FirstOrDefault();
+                    total += productPrices * productAmount;
+                }
+                if (itemType == 2)
+                {
+                    int itemId = int.Parse(lstOrderItems.Items[i].Text);
+                    var menuPrices = (from m in db.Menu
+                                      where m.ID == itemId
+                                      select m.Price).FirstOrDefault();
+                    total += menuPrices * menuAmount;
+                }
+            }
+            return total;
         }
 
         private void btnMenuAdd_Click(object sender, EventArgs e)
@@ -163,6 +228,7 @@ namespace FoodOrderUI
                 nuPrepTimeMenu.Value = 0;
                 nuMenuPrice.Value = 0;
                 cxbIsAllergen.Checked = false;
+                cbProductList.SelectedItem = -1;
                 lbSelectedItemIds.Items.Clear();
                 lbProduct.Items.Clear();
             }
@@ -187,6 +253,11 @@ namespace FoodOrderUI
             lbProduct.Items.Add(cbProductList.Text);
             lbSelectedItemIds.Items.Add((int)cbProductList.SelectedValue);
         }
-       
+
+        private void btnOrderConfirm_Click(object sender, EventArgs e)
+        {
+            OrderDetails orderDetail = new OrderDetails();
+            Orders order = new Orders();
+        }
     }
 }

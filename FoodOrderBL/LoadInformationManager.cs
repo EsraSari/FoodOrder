@@ -28,5 +28,14 @@ namespace FoodOrderBL
             }
             return null;
         }
+
+        public List<OrderInfo> GetOrders()
+        {
+            if (_db != null)
+            {
+                return LoadInformations.LoadOrders(_db, _key);
+            }
+            return null;
+        }
     }
 }

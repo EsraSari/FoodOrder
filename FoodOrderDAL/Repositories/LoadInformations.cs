@@ -1,10 +1,5 @@
 ﻿using FoodOrderDAL.Context;
 using FoodOrderDomain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FoodOrderDAL.Repositories
 {
@@ -24,5 +19,40 @@ namespace FoodOrderDAL.Repositories
 
             return addressInformations;
         }
+
+        public static List<OrderInfo> LoadOrders(AppDBContext db, int cid)
+        {
+            var orders = db.Orders
+                            .GroupJoin(db.OrderDetails,
+                                order => order.ID,
+                                orderDetail => orderDetail.OrderID,
+                                (order, orderDetails) => new
+                                {
+                                    Order = order,
+                                    OrderDetails = orderDetails
+                                })
+                            .SelectMany(
+                                join => join.OrderDetails.DefaultIfEmpty(),
+                                (join, orderDetail) => new { Order = join.Order, OrderDetail = orderDetail })
+                            .GroupBy(x => x.Order.ID)
+                            .Select(group => new OrderInfo
+                            {
+                                OrderID = group.Key,
+                                OrderPrice = group.First().Order.Price,
+                                OrderState = group.First().Order.OrderState.OrderState,
+                                OrderDetail = string.Join(", ", group.Select(x =>
+                                    $"{x.OrderDetail.ItemID}-{(x.OrderDetail.ItemType == 1 ? (db.Products.FirstOrDefault(p => p.ID == x.OrderDetail.ItemID) != null ? db.Products.FirstOrDefault(p => p.ID == x.OrderDetail.ItemID).ProductName : "Bilgi yok") : (x.OrderDetail.ItemType == 2 ? (db.Menu.FirstOrDefault(m => m.ID == x.OrderDetail.ItemID) != null ? db.Menu.FirstOrDefault(m => m.ID == x.OrderDetail.ItemID).MenuName : "Bilgi yok") : "Bilgi yok"))}"))
+                            })
+                            .ToList();
+
+            return orders;
+        }
+    }
+    public class OrderInfo
+    {
+        public int OrderID { get; set; }
+        public decimal OrderPrice { get; set; }
+        public string OrderState { get; set; }
+        public string OrderDetail { get; set; }
     }
 }
