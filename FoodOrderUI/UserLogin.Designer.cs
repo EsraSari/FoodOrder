@@ -33,6 +33,7 @@
             txtUserName = new TextBox();
             txtPassword = new TextBox();
             btnLogin = new Button();
+            btnRegister = new Button();
             SuspendLayout();
             // 
             // lblUserName
@@ -77,11 +78,22 @@
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
             // 
+            // btnRegister
+            // 
+            btnRegister.Location = new Point(206, 324);
+            btnRegister.Name = "btnRegister";
+            btnRegister.Size = new Size(134, 55);
+            btnRegister.TabIndex = 5;
+            btnRegister.Text = "Kayıt Ol";
+            btnRegister.UseVisualStyleBackColor = true;
+            btnRegister.Click += btnRegister_Click;
+            // 
             // UserLogin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(544, 391);
+            Controls.Add(btnRegister);
             Controls.Add(btnLogin);
             Controls.Add(txtPassword);
             Controls.Add(txtUserName);
@@ -101,5 +113,6 @@
         private TextBox txtUserName;
         private TextBox txtPassword;
         private Button btnLogin;
+        private Button btnRegister;
     }
 }

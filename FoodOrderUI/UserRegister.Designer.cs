@@ -219,7 +219,7 @@
             // lblAddressDetails
             // 
             lblAddressDetails.AutoSize = true;
-            lblAddressDetails.Location = new Point(95, 562);
+            lblAddressDetails.Location = new Point(95, 597);
             lblAddressDetails.Name = "lblAddressDetails";
             lblAddressDetails.Size = new Size(173, 20);
             lblAddressDetails.TabIndex = 21;
@@ -235,7 +235,7 @@
             // 
             // txtAddressDetails
             // 
-            txtAddressDetails.Location = new Point(95, 594);
+            txtAddressDetails.Location = new Point(95, 629);
             txtAddressDetails.Multiline = true;
             txtAddressDetails.Name = "txtAddressDetails";
             txtAddressDetails.Size = new Size(328, 170);

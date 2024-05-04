@@ -41,7 +41,7 @@ namespace FoodOrderDAL.Repositories
                                 OrderPrice = group.First().Order.Price,
                                 OrderState = group.First().Order.OrderState.OrderState,
                                 OrderDetail = string.Join(", ", group.Select(x =>
-                                    $"{x.OrderDetail.ItemID}-{(x.OrderDetail.ItemType == 1 ? (db.Products.FirstOrDefault(p => p.ID == x.OrderDetail.ItemID) != null ? db.Products.FirstOrDefault(p => p.ID == x.OrderDetail.ItemID).ProductName : "Bilgi yok") : (x.OrderDetail.ItemType == 2 ? (db.Menu.FirstOrDefault(m => m.ID == x.OrderDetail.ItemID) != null ? db.Menu.FirstOrDefault(m => m.ID == x.OrderDetail.ItemID).MenuName : "Bilgi yok") : "Bilgi yok"))}"))
+                                    $"{x.OrderDetail.ItemID}-{(x.OrderDetail.ItemTypeID == 1 ? (db.Products.FirstOrDefault(p => p.ID == x.OrderDetail.ItemID) != null ? db.Products.FirstOrDefault(p => p.ID == x.OrderDetail.ItemID).ProductName : "Bilgi yok") : (x.OrderDetail.ItemTypeID == 2 ? (db.Menu.FirstOrDefault(m => m.ID == x.OrderDetail.ItemID) != null ? db.Menu.FirstOrDefault(m => m.ID == x.OrderDetail.ItemID).MenuName : "Bilgi yok") : "Bilgi yok"))}"))
                             })
                             .ToList();
 

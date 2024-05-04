@@ -56,8 +56,13 @@ namespace FoodOrderUI
 
             db.AddressInformations.Add(addressInfo);
             db.SaveChanges();
-            MessageBox.Show("Kayıt oldu");
-
+            DialogResult result = MessageBox.Show("Kayıt oldunuz giriş yapma sayfasına geçebilirsiniz", "Başarılı", MessageBoxButtons.OK);
+            if (result == DialogResult.OK)
+            {
+                UserLogin lg = new UserLogin();
+                lg.Show();
+                this.Close();
+            }
         }
         
         private void UserRegister_Load(object sender, EventArgs e)

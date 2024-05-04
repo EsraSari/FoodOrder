@@ -10,7 +10,8 @@ namespace FoodOrderDomain
 {
     public class OrderDetails: BaseClass
     {
-        public int ItemType { get; set; }
+        public int ItemTypeID { get; set; }
+        public ItemTypes ItemType { get; set; }
         public int ItemID { get; set; }
         public Menu Menu { get; set; }
         public Products Product{ get; set; }

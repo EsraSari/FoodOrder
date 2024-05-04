@@ -21,6 +21,7 @@ namespace FoodOrderDAL.Context
             .HasIndex(x => x.UserName) // Benzersiz olmasını istediğiniz özelliği belirtin
             .IsUnique();
 
+
             modelBuilder.ApplyConfiguration(new ProductMapping());
             modelBuilder.ApplyConfiguration(new CityMapping());
             modelBuilder.ApplyConfiguration(new ContactInfoMapping());
@@ -28,6 +29,7 @@ namespace FoodOrderDAL.Context
             modelBuilder.ApplyConfiguration(new OrderMapping());
             modelBuilder.ApplyConfiguration(new AddressMapping());
             modelBuilder.ApplyConfiguration(new GenderMapping());
+            modelBuilder.ApplyConfiguration(new OrderDetailMapping());
 
             modelBuilder.ApplyConfiguration(new SeedOrderState());
             modelBuilder.ApplyConfiguration(new SeedPaymentMethods());
@@ -37,6 +39,8 @@ namespace FoodOrderDAL.Context
             modelBuilder.ApplyConfiguration(new SeedGenders());
             modelBuilder.ApplyConfiguration(new SeedCategories());
             modelBuilder.ApplyConfiguration(new SeedProducts());
+            modelBuilder.ApplyConfiguration(new SeedContactTypes());
+            modelBuilder.ApplyConfiguration(new SeedItemTypes());
 
 
             base.OnModelCreating(modelBuilder);
@@ -61,6 +65,7 @@ namespace FoodOrderDAL.Context
         public DbSet<OrderStates> OrderStates{ get; set; }
 
         public DbSet<Genders> Genders{ get; set; }
+        public DbSet<ItemTypes> ItemTypes{ get; set; }
 
 
     }

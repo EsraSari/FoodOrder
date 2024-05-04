@@ -54,5 +54,12 @@ namespace FoodOrderUI
             db = new AppDBContext();
             txtPassword.PasswordChar = '*';
         }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            UserRegister rg = new UserRegister();
+            rg.Show();
+            this.Hide();
+        }
     }
 }
