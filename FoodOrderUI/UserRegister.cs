@@ -27,7 +27,9 @@ namespace FoodOrderUI
 
             Customers customer = new Customers();
             customer.AddressInfo = new List<AddressInformations>();
+            customer.ContactInfo = new List<ContactInformations>();
             AddressInformations addressInfo = new AddressInformations();
+            
 
             customer.FirstName = firstName;
             customer.LastName = lastName;
@@ -40,6 +42,16 @@ namespace FoodOrderUI
             customer.ModifiedDate = DateTime.Now;
             db.Customers.Add(customer);
 
+            int contactType = (int)cbCommTypes.SelectedValue;
+            string commDetail = txtCommDetail.Text.Trim();
+            ContactInformations contactInfo = new ContactInformations()
+            {
+                CustomerID = customer.ID,
+                ContactTypeID = contactType,
+                CommDetail = commDetail
+            };
+
+            db.ContactInformations.Add(contactInfo);
 
             int country = (int)cbCountries.SelectedValue;
             int city = (int)cbCities.SelectedValue;
@@ -55,6 +67,7 @@ namespace FoodOrderUI
             customer.AddressInfo.Add(addressInfo);
 
             db.AddressInformations.Add(addressInfo);
+
             db.SaveChanges();
             DialogResult result = MessageBox.Show("Kayıt oldunuz giriş yapma sayfasına geçebilirsiniz", "Başarılı", MessageBoxButtons.OK);
             if (result == DialogResult.OK)
@@ -75,6 +88,7 @@ namespace FoodOrderUI
 
             var genders = loadCombo.LoadGenders();
             var countries = loadCombo.LoadCountries();
+            var commTypes = loadCombo.LoadCommTypes();
 
 
             cbGender.DisplayMember = "Value"; // ComboBox'ta görüntülenecek metin, Value özelliği (yani cinsiyet ismi) olacak
@@ -82,9 +96,13 @@ namespace FoodOrderUI
             cbGender.DataSource = new BindingSource(genders, null);
 
 
-            cbCountries.DisplayMember = "Value"; // ComboBox'ta görüntülenecek metin, Value özelliği (yani cinsiyet ismi) olacak
-            cbCountries.ValueMember = "Key"; // ComboBox'tan seçilen öğenin değeri, Key özelliği (yani cinsiyet ID'si) olacak
+            cbCountries.DisplayMember = "Value"; 
+            cbCountries.ValueMember = "Key"; 
             cbCountries.DataSource = new BindingSource(countries, null);
+
+            cbCommTypes.DisplayMember = "Value";
+            cbCommTypes.ValueMember = "Key";
+            cbCommTypes.DataSource = new BindingSource(commTypes, null);
 
         }
         public void ClearComboBox()

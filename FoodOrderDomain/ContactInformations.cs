@@ -9,11 +9,9 @@ namespace FoodOrderDomain
     public class ContactInformations: BaseClass
     {
         public List<Orders> Orders{ get; set; }
-        public int CountryCode { get; set; } // +90
-        public int PhoneNumber { get; set; }
-        public string Email { get; set; }
+        public string CommDetail { get; set; }
         public int ContactTypeID { get; set; }
-        public ContactTypes ContactType  { get; set; } // cep - sabit - email
+        public ContactTypes ContactType  { get; set; } // cep  - email
         public int CustomerID { get; set; }
         public Customers Customer { get; set; }
     }

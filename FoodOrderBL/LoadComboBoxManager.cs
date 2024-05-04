@@ -30,6 +30,14 @@ namespace FoodOrderBL
             }
             return null;
         }
+        public List<KeyValuePair<int, string>> LoadCommTypes()
+        {
+            if (_db != null)
+            {
+                return LoadComboBoxEntities.LoadCommTypes(_db);
+            }
+            return null;
+        }
         public List<KeyValuePair<int, string>> LoadCategories()
         {
             if (_db != null)

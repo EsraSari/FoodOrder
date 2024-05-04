@@ -18,6 +18,15 @@ namespace FoodOrderDAL.Repositories
 
             return genders;
         }
+
+        public static List<KeyValuePair<int, string>> LoadCommTypes(AppDBContext db)
+        {
+            var commTypes = (from com in db.ContactTypes
+                           orderby com.ID ascending
+                           select new KeyValuePair<int, string>(com.ID, com.ContactType)).ToList();
+
+            return commTypes;
+        }
         public static List<KeyValuePair<int, string>> LoadCategories(AppDBContext db)
         {
             var categories = (from cat in db.Categories

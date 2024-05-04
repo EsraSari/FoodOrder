@@ -45,6 +45,10 @@
             lblCities = new Label();
             cbCities = new ComboBox();
             grpUserInfo = new GroupBox();
+            txtCommDetail = new TextBox();
+            cbCommTypes = new ComboBox();
+            lblCommDetail = new Label();
+            lblCommType = new Label();
             lblAddressDetails = new Label();
             cbCounties = new ComboBox();
             txtAddressDetails = new TextBox();
@@ -154,7 +158,7 @@
             // cbCountries
             // 
             cbCountries.FormattingEnabled = true;
-            cbCountries.Location = new Point(226, 387);
+            cbCountries.Location = new Point(226, 498);
             cbCountries.Name = "cbCountries";
             cbCountries.Size = new Size(151, 28);
             cbCountries.TabIndex = 14;
@@ -163,7 +167,7 @@
             // lblCountry
             // 
             lblCountry.AutoSize = true;
-            lblCountry.Location = new Point(93, 385);
+            lblCountry.Location = new Point(93, 496);
             lblCountry.Name = "lblCountry";
             lblCountry.Size = new Size(38, 20);
             lblCountry.TabIndex = 15;
@@ -172,7 +176,7 @@
             // lblCities
             // 
             lblCities.AutoSize = true;
-            lblCities.Location = new Point(95, 447);
+            lblCities.Location = new Point(95, 558);
             lblCities.Name = "lblCities";
             lblCities.Size = new Size(42, 20);
             lblCities.TabIndex = 16;
@@ -181,7 +185,7 @@
             // cbCities
             // 
             cbCities.FormattingEnabled = true;
-            cbCities.Location = new Point(226, 439);
+            cbCities.Location = new Point(226, 550);
             cbCities.Name = "cbCities";
             cbCities.Size = new Size(151, 28);
             cbCities.TabIndex = 17;
@@ -189,6 +193,10 @@
             // 
             // grpUserInfo
             // 
+            grpUserInfo.Controls.Add(txtCommDetail);
+            grpUserInfo.Controls.Add(cbCommTypes);
+            grpUserInfo.Controls.Add(lblCommDetail);
+            grpUserInfo.Controls.Add(lblCommType);
             grpUserInfo.Controls.Add(lblAddressDetails);
             grpUserInfo.Controls.Add(cbCounties);
             grpUserInfo.Controls.Add(txtAddressDetails);
@@ -211,15 +219,48 @@
             grpUserInfo.Controls.Add(txtUserName);
             grpUserInfo.Location = new Point(35, 12);
             grpUserInfo.Name = "grpUserInfo";
-            grpUserInfo.Size = new Size(553, 844);
+            grpUserInfo.Size = new Size(553, 910);
             grpUserInfo.TabIndex = 18;
             grpUserInfo.TabStop = false;
             grpUserInfo.Text = "Kullanıcı Bilgileri";
             // 
+            // txtCommDetail
+            // 
+            txtCommDetail.Location = new Point(228, 444);
+            txtCommDetail.Name = "txtCommDetail";
+            txtCommDetail.Size = new Size(125, 27);
+            txtCommDetail.TabIndex = 25;
+            // 
+            // cbCommTypes
+            // 
+            cbCommTypes.FormattingEnabled = true;
+            cbCommTypes.Location = new Point(226, 381);
+            cbCommTypes.Name = "cbCommTypes";
+            cbCommTypes.Size = new Size(151, 28);
+            cbCommTypes.TabIndex = 24;
+            // 
+            // lblCommDetail
+            // 
+            lblCommDetail.AutoSize = true;
+            lblCommDetail.Location = new Point(93, 444);
+            lblCommDetail.Name = "lblCommDetail";
+            lblCommDetail.Size = new Size(104, 20);
+            lblCommDetail.TabIndex = 23;
+            lblCommDetail.Text = "İletişim Bilgisi:";
+            // 
+            // lblCommType
+            // 
+            lblCommType.AutoSize = true;
+            lblCommType.Location = new Point(93, 384);
+            lblCommType.Name = "lblCommType";
+            lblCommType.Size = new Size(89, 20);
+            lblCommType.TabIndex = 22;
+            lblCommType.Text = "İletişim Tipi:";
+            // 
             // lblAddressDetails
             // 
             lblAddressDetails.AutoSize = true;
-            lblAddressDetails.Location = new Point(95, 597);
+            lblAddressDetails.Location = new Point(95, 659);
             lblAddressDetails.Name = "lblAddressDetails";
             lblAddressDetails.Size = new Size(173, 20);
             lblAddressDetails.TabIndex = 21;
@@ -228,14 +269,14 @@
             // cbCounties
             // 
             cbCounties.FormattingEnabled = true;
-            cbCounties.Location = new Point(226, 496);
+            cbCounties.Location = new Point(226, 607);
             cbCounties.Name = "cbCounties";
             cbCounties.Size = new Size(151, 28);
             cbCounties.TabIndex = 20;
             // 
             // txtAddressDetails
             // 
-            txtAddressDetails.Location = new Point(95, 629);
+            txtAddressDetails.Location = new Point(95, 691);
             txtAddressDetails.Multiline = true;
             txtAddressDetails.Name = "txtAddressDetails";
             txtAddressDetails.Size = new Size(328, 170);
@@ -244,7 +285,7 @@
             // İlçe
             // 
             İlçe.AutoSize = true;
-            İlçe.Location = new Point(93, 504);
+            İlçe.Location = new Point(93, 615);
             İlçe.Name = "İlçe";
             İlçe.Size = new Size(32, 20);
             İlçe.TabIndex = 18;
@@ -252,7 +293,7 @@
             // 
             // btnRegister
             // 
-            btnRegister.Location = new Point(266, 894);
+            btnRegister.Location = new Point(261, 928);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(94, 58);
             btnRegister.TabIndex = 19;
@@ -264,7 +305,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(632, 982);
+            ClientSize = new Size(632, 1029);
             Controls.Add(btnRegister);
             Controls.Add(grpUserInfo);
             Name = "UserRegister";
@@ -299,5 +340,9 @@
         private TextBox txtAddressDetails;
         private Label İlçe;
         private Button btnRegister;
+        private Label lblCommDetail;
+        private Label lblCommType;
+        private ComboBox cbCommTypes;
+        private TextBox txtCommDetail;
     }
 }
