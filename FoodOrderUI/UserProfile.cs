@@ -43,8 +43,8 @@ namespace FoodOrderUI
         private void LoadCommInfo()
         {
             lstViewCommInfo.Items.Clear();
-            LoadInformationManager mng = new LoadInformationManager(db, _customerID);
-            var commInfos = mng.GetCommInfo().ToList();
+            CommunicationManager communicationManager = new CommunicationManager(_customerID);
+            var commInfos = communicationManager.GetCommInfo().ToList();
 
             int index = 0;
             if (commInfos.Count() > 0)
@@ -64,8 +64,8 @@ namespace FoodOrderUI
         private void LoadAddressInfo()
         {
             lstViewAdress.Items.Clear();
-            LoadInformationManager mng = new LoadInformationManager(db, _customerID);
-            var addressInfo = mng.GetAddressInfo().ToList();
+            AddressManager addressManager = new AddressManager(_customerID);
+            var addressInfo = addressManager.GetAddressInfo().ToList();
 
             int index = 0;
             if (addressInfo.Count() > 0)
@@ -83,8 +83,8 @@ namespace FoodOrderUI
         private void LoadOrders()
         {
             lstViewOrders.Items.Clear();
-            LoadInformationManager mng = new LoadInformationManager(db, _customerID);
-            var orders = mng.GetOrders().ToList();
+            OrderManager orderManager = new OrderManager(_customerID);
+            var orders = orderManager.GetOrders().ToList();
 
             int index = 0;
             if (orders.Count() > 0)

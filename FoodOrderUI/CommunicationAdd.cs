@@ -30,30 +30,32 @@ namespace FoodOrderUI
 
         private void btnCommAdd_Click(object sender, EventArgs e)
         {
+            CommunicationManager communicationManager = new CommunicationManager();
+            
             int contactType = (int)cbCommTypes.SelectedValue;
             string commDetail = txtCommDetail.Text.Trim();
-            ContactInformations contactInfo = new ContactInformations()
-            {
-                CustomerID = _customerid,
-                ContactTypeID = contactType,
-                CommDetail = commDetail
-            };
+            bool returnValue = communicationManager.CreateComm(contactType, commDetail, _customerid);
 
-            db.ContactInformations.Add(contactInfo);
-            db.SaveChanges();
-            DialogResult result = MessageBox.Show("Kayıt başarılı", "Başarılı", MessageBoxButtons.OK);
-            if (result == DialogResult.OK)
+            if (returnValue)
             {
-                UserProfile p = new UserProfile(_customerid);
-                p.Show();
-                this.Close();
+                DialogResult result = MessageBox.Show("İletişim bilgileri kaydedilmiştir", "Başarılı", MessageBoxButtons.OK);
+                if (result == DialogResult.OK)
+                {
+                    UserProfile profile = new UserProfile(_customerid);
+                    profile.Show();
+                    this.Close();
+                }
             }
+            else
+            {
+                MessageBox.Show("Hata alındı.");
+            }
+
         }
 
         private void CommunicationAdd_Load(object sender, EventArgs e)
         {
-            db = new AppDBContext();
-            loadCombo = new LoadComboBoxManager(db);
+            loadCombo = new LoadComboBoxManager();
             var commTypes = loadCombo.LoadCommTypes();
             cbCommTypes.DisplayMember = "Value";
             cbCommTypes.ValueMember = "Key";

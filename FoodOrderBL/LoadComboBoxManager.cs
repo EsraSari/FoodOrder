@@ -13,13 +13,13 @@ namespace FoodOrderBL
     {
         private readonly AppDBContext _db;
         private readonly int _key;
-        public LoadComboBoxManager(AppDBContext db)
+        public LoadComboBoxManager()
         {
-            _db = db;
+            _db = new AppDBContext();
         }
-        public LoadComboBoxManager(AppDBContext db, int key)
+        public LoadComboBoxManager(int key)
         {
-            _db = db;
+            _db = new AppDBContext();
             _key = key;
         }
         public List<KeyValuePair<int, string>> LoadGenders()

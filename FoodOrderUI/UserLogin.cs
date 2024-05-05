@@ -1,3 +1,4 @@
+using FoodOrderBL;
 using FoodOrderDAL.Context;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -5,7 +6,6 @@ namespace FoodOrderUI
 {
     public partial class UserLogin : Form
     {
-        AppDBContext db;
         public UserLogin()
         {
             InitializeComponent();
@@ -13,35 +13,19 @@ namespace FoodOrderUI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (db.Customers.FirstOrDefault(x => x.UserName == txtUserName.Text && x.Password == txtPassword.Text) != null)
+            string userName = txtUserName.Text.Trim();
+            string password = txtPassword.Text.Trim();
+            CustomerManager customerManager = new CustomerManager();
+            int customerID = customerManager.FindCustomer(userName, password);
+            if (customerID != -1)
             {
-                int customerID = db.Customers
-                    .Where(c => c.UserName == txtUserName.Text)
-                    .Select(c => c.ID)
-                    .FirstOrDefault();
-                if (customerID == 0)
-                {
-                    MessageBox.Show("Test");
-                }
-                else
-                {
-                    UserProfile profile = new UserProfile(customerID);
-                    profile.Show();
-                    this.Hide();
-                }
-
-                //int addressInfo = (from d in db.AddressInformations
-                //                  where d.CustomerID == customerID
-                //                   select d.ID).FirstOrDefault();
-
-                //FoodOrderMenu productManager = new FoodOrderMenu(customerID, addressInfo);
-                //productManager.Show();
-
+                UserProfile profile = new UserProfile(customerID);
+                profile.Show();
+                this.Hide();
             }
             else
             {
-                MessageBox.Show("Kullanýcý adý ya da parola hatalý", "Tekrar Deneyiniz", MessageBoxButtons.OK, MessageBoxIcon.Error
-                     );
+                MessageBox.Show("Kullanýcý adý ya da parola hatalý", "Tekrar Deneyiniz", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtUserName.Text = txtUserName.Text = "";
                 txtPassword.Clear();
                 txtUserName.Focus(); // mouse imlecini oraya getirir.
@@ -51,7 +35,6 @@ namespace FoodOrderUI
 
         private void UserLogin_Load(object sender, EventArgs e)
         {
-            db = new AppDBContext();
             txtPassword.PasswordChar = '*';
         }
 

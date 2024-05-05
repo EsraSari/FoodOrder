@@ -245,8 +245,7 @@ namespace FoodOrderUI
             gpMenuAdd.Visible = true;
             gpProductAdd.Visible = false;
             gpOrder.Visible = false;
-            db = new AppDBContext();
-            loadCombo = new LoadComboBoxManager(db);
+            loadCombo = new LoadComboBoxManager();
             var products = loadCombo.LoadProducts();
 
             cbProductList.DisplayMember = "Value";
