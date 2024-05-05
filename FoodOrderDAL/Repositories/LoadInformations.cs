@@ -20,6 +20,8 @@ namespace FoodOrderDAL.Repositories
             return addressInformations;
         }
 
+
+
         public static List<OrderInfo> LoadOrders(AppDBContext db, int cid)
         {
             var orders = db.Orders
@@ -46,6 +48,21 @@ namespace FoodOrderDAL.Repositories
                             .ToList();
 
             return orders;
+        }
+
+        public static List<ContactInformations> LoadCommunicationInformations(AppDBContext db, int cid)
+        {
+            var commInformations = (from cc in db.ContactInformations
+                                       where cc.CustomerID == cid
+                                       select new ContactInformations
+                                       {
+                                           ID = cc.ID,
+                                           CustomerID = cc.CustomerID,
+                                           ContactTypeID = cc.ContactTypeID,
+                                           CommDetail = cc.CommDetail
+                                       }).ToList();
+
+            return commInformations;
         }
     }
     public class OrderInfo

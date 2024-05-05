@@ -81,6 +81,7 @@
             cbMenus = new ComboBox();
             lblMenus = new Label();
             lblProducts = new Label();
+            columnHeader3 = new ColumnHeader();
             contextMenuStrip1.SuspendLayout();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbProductPic).BeginInit();
@@ -478,10 +479,10 @@
             // 
             // lstOrderItems
             // 
-            lstOrderItems.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
-            lstOrderItems.Location = new Point(300, 99);
+            lstOrderItems.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
+            lstOrderItems.Location = new Point(403, 87);
             lstOrderItems.Name = "lstOrderItems";
-            lstOrderItems.Size = new Size(129, 237);
+            lstOrderItems.Size = new Size(261, 237);
             lstOrderItems.TabIndex = 23;
             lstOrderItems.UseCompatibleStateImageBehavior = false;
             lstOrderItems.View = View.Details;
@@ -570,6 +571,10 @@
             lblProducts.TabIndex = 13;
             lblProducts.Text = "Ürünler";
             // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "Amount";
+            // 
             // FoodOrderMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -657,5 +662,6 @@
         private ListView lstOrderItems;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
+        private ColumnHeader columnHeader3;
     }
 }

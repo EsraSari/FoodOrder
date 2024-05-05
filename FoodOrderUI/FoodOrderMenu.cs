@@ -99,21 +99,27 @@ namespace FoodOrderUI
         {
             int itemType = 1;
             int productId;
+            int productAmount = (int)nuProductAmount.Value;
+            int menuAmount = (int)nuMenuAmount.Value;
             if (cbKetchup.Checked)
             {
                 productId = 3;
+                productAmount = 1;
                 lbOrders.Items.Add(cbKetchup.Text);
                 ListViewItem ketchupItem = new ListViewItem(itemType.ToString());
                 ketchupItem.SubItems.Add(productId.ToString());
+                ketchupItem.SubItems.Add(productAmount.ToString());
                 lstOrderItems.Items.Add(ketchupItem);
             }
 
             if (cbMayonnaise.Checked)
             {
-               productId = 4;
+                productId = 4;
+                productAmount = 1;
                 lbOrders.Items.Add(cbMayonnaise.Text);
                 ListViewItem mayonnaiseItem = new ListViewItem(itemType.ToString());
                 mayonnaiseItem.SubItems.Add(productId.ToString());
+                mayonnaiseItem.SubItems.Add(productAmount.ToString());
                 lstOrderItems.Items.Add(mayonnaiseItem);
             }
             if (cbProducts.Text != String.Empty)
@@ -127,6 +133,7 @@ namespace FoodOrderUI
                     itemType = 1;
                     ListViewItem item = new ListViewItem(itemType.ToString());
                     item.SubItems.Add(productId.ToString());
+                    item.SubItems.Add(productAmount.ToString());
                     lstOrderItems.Items.Add(item);
                     
                 }
@@ -143,6 +150,7 @@ namespace FoodOrderUI
                     itemType = 2;
                     ListViewItem item = new ListViewItem(itemType.ToString());
                     item.SubItems.Add(menuId.ToString());
+                    item.SubItems.Add(menuAmount.ToString());
                     lstOrderItems.Items.Add(item);
                 }
             }
@@ -155,29 +163,27 @@ namespace FoodOrderUI
         }
         private decimal TotalPriceCalculate()
         {
-            int productAmount = (int)nuProductAmount.Value;
-            int menuAmount = (int)nuMenuAmount.Value;
+            
             decimal total = 0;
 
-            for (int i = 0; i < lstOrderItems.Items.Count; i++)
+            foreach (ListViewItem item in lstOrderItems.Items)
             {
-                int itemType = int.Parse(lstOrderItems.Items[i].SubItems[0].Text); 
-
+                int itemType = int.Parse(item.Text);
+                int itemId = int.Parse(item.SubItems[1].Text); // ID, örneğin ilk alt öğe olarak varsayıldı
+                int amount = int.Parse(item.SubItems[2].Text);
                 if (itemType == 1)
                 {
-                    int itemId = int.Parse(lstOrderItems.Items[i].Text);
                     var productPrices = (from pr in db.Products
                                          where pr.ID == itemId
                                          select pr.Price).FirstOrDefault();
-                    total += productPrices * productAmount;
+                    total += productPrices * amount;
                 }
                 if (itemType == 2)
                 {
-                    int itemId = int.Parse(lstOrderItems.Items[i].Text);
                     var menuPrices = (from m in db.Menu
                                       where m.ID == itemId
                                       select m.Price).FirstOrDefault();
-                    total += menuPrices * menuAmount;
+                    total += menuPrices * amount;
                 }
             }
             return total;

@@ -28,6 +28,7 @@ namespace FoodOrderUI
             Customers customer = new Customers();
             customer.AddressInfo = new List<AddressInformations>();
             customer.ContactInfo = new List<ContactInformations>();
+
             AddressInformations addressInfo = new AddressInformations();
             
 
@@ -64,8 +65,9 @@ namespace FoodOrderUI
             addressInfo.CountyID = county;
             addressInfo.CustomerID = customer.ID;
             addressInfo.AddressDetail = addressdetail;
-            customer.AddressInfo.Add(addressInfo);
 
+            customer.AddressInfo.Add(addressInfo);
+            customer.ContactInfo.Add(contactInfo);
             db.AddressInformations.Add(addressInfo);
 
             db.SaveChanges();
@@ -81,6 +83,7 @@ namespace FoodOrderUI
         private void UserRegister_Load(object sender, EventArgs e)
         {
             ClearComboBox();
+            txtPassword.PasswordChar = '*';
             cbCities.Enabled = cbCounties.Enabled = false;
 
             db = new AppDBContext();
@@ -111,11 +114,13 @@ namespace FoodOrderUI
             cbCities.Items.Clear();
             cbCounties.Items.Clear();
             cbGender.Items.Clear();
+            cbCommTypes.Items.Clear();
 
             cbCountries.SelectedIndex = -1;
             cbCities.SelectedIndex = -1;
             cbCounties.SelectedIndex = -1;
             cbGender.SelectedIndex = -1;
+            cbCommTypes.SelectedIndex = -1;
         }
         private void cbCountries_SelectedIndexChanged(object sender, EventArgs e)
         {

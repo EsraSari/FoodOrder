@@ -328,12 +328,13 @@
         private TextBox txtLastName;
         private TextBox txtUserName;
         private TextBox txtPassword;
-        private ComboBox cbGender;
+        private ComboBox cbCommTypes;
         private DateTimePicker dtBirthDate;
         private ComboBox cbCountries;
         private Label lblCountry;
         private Label lblCities;
         private ComboBox cbCities;
+        private ComboBox cbGender;
         private GroupBox grpUserInfo;
         private Label lblAddressDetails;
         private ComboBox cbCounties;
@@ -342,7 +343,6 @@
         private Button btnRegister;
         private Label lblCommDetail;
         private Label lblCommType;
-        private ComboBox cbCommTypes;
         private TextBox txtCommDetail;
     }
 }

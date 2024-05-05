@@ -29,6 +29,15 @@ namespace FoodOrderBL
             return null;
         }
 
+        public List<ContactInformations> GetCommInfo()
+        {
+            if (_db != null)
+            {
+                return LoadInformations.LoadCommunicationInformations(_db, _key);
+            }
+            return null;
+        }
+
         public List<OrderInfo> GetOrders()
         {
             if (_db != null)

@@ -34,9 +34,32 @@ namespace FoodOrderUI
         private void btnAddressInformation_Click(object sender, EventArgs e)
         {
             lstViewAdress.Visible = true;
+            lstViewOrders.Visible = false;
+            lstViewCommInfo.Visible = false;
             LoadAddressInfo();
 
         }
+
+        private void LoadCommInfo()
+        {
+            lstViewCommInfo.Items.Clear();
+            LoadInformationManager mng = new LoadInformationManager(db, _customerID);
+            var commInfos = mng.GetCommInfo().ToList();
+
+            int index = 0;
+            if (commInfos.Count() > 0)
+            {
+                foreach (ContactInformations cc in commInfos)
+                {
+                    lstViewCommInfo.Items.Add(cc.ID.ToString());
+                    lstViewCommInfo.Items[index].SubItems.Add(cc.CustomerID.ToString());
+                    lstViewCommInfo.Items[index].SubItems.Add(cc.ContactTypeID.ToString());
+                    lstViewCommInfo.Items[index].SubItems.Add(cc.CommDetail.ToString());
+                    index++;
+                }
+            }
+        }
+
 
         private void LoadAddressInfo()
         {
@@ -59,19 +82,19 @@ namespace FoodOrderUI
 
         private void LoadOrders()
         {
-            lstOrders.Items.Clear();
+            lstViewOrders.Items.Clear();
             LoadInformationManager mng = new LoadInformationManager(db, _customerID);
-            var orders = mng.GetOrders();
+            var orders = mng.GetOrders().ToList();
 
             int index = 0;
             if (orders.Count() > 0)
             {
                 foreach (var order in orders)
                 {
-                    lstOrders.Items.Add(order.OrderID.ToString());
-                    lstOrders.Items[index].SubItems.Add(order.OrderPrice.ToString());
-                    lstOrders.Items[index].SubItems.Add(order.OrderState.ToString());
-                    lstOrders.Items[index].SubItems.Add(order.OrderDetail.ToString());
+                    lstViewOrders.Items.Add(order.OrderID.ToString());
+                    lstViewOrders.Items[index].SubItems.Add(order.OrderPrice.ToString());
+                    lstViewOrders.Items[index].SubItems.Add(order.OrderState.ToString());
+                    lstViewOrders.Items[index].SubItems.Add(order.OrderDetail.ToString());
                     index++;
                 }
             }
@@ -79,7 +102,9 @@ namespace FoodOrderUI
 
         private void UserProfile_Load(object sender, EventArgs e)
         {
-
+            lstViewAdress.Visible = false;
+            lstViewOrders.Visible = false;
+            lstViewCommInfo.Visible = false;
         }
 
         private void güncelleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -102,7 +127,7 @@ namespace FoodOrderUI
                     DialogResult result = MessageBox.Show("Adres başarıyla güncellendi.", "Başarılı", MessageBoxButtons.OK);
                     if (result == DialogResult.OK)
                     {
-                        LoadOrders();
+                        LoadAddressInfo();
                     }
                 }
                 else
@@ -145,6 +170,9 @@ namespace FoodOrderUI
 
         private void btnOrders_Click(object sender, EventArgs e)
         {
+            lstViewAdress.Visible = false;
+            lstViewOrders.Visible = true;
+            lstViewCommInfo.Visible = false;
             LoadOrders();
         }
 
@@ -155,7 +183,7 @@ namespace FoodOrderUI
 
         private void CancelOrder()
         {
-            int orderID = int.Parse(lstOrders.SelectedItems[0].SubItems[0].Text);
+            int orderID = int.Parse(lstViewOrders.SelectedItems[0].SubItems[0].Text);
             var order = db.Orders.FirstOrDefault(x => x.ID == orderID);
 
             if (order != null)
@@ -179,9 +207,83 @@ namespace FoodOrderUI
             int addressId = (from add in db.AddressInformations
                              where add.CustomerID == _customerID
                              select add.ID).FirstOrDefault();
-            FoodOrderMenu orders =  new FoodOrderMenu(_customerID, addressId);
+            FoodOrderMenu orders = new FoodOrderMenu(_customerID, addressId);
             orders.ShowDialog();
             this.Close();
+        }
+
+        private void btnCommInfos_Click(object sender, EventArgs e)
+        {
+            lstViewAdress.Visible = false;
+            lstViewAdress.Visible = false;
+            lstViewCommInfo.Visible = true;
+            LoadCommInfo();
+        }
+
+
+        private void yeniEkleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CommunicationAdd cad = new CommunicationAdd(_customerID);
+            cad.Show();
+            this.Close();
+        }
+
+        private void guncelleToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            string userInput = Microsoft.VisualBasic.Interaction.InputBox("Güncelle:", "Yeni İletişim Bilgisi:", "");
+            if (!string.IsNullOrEmpty(userInput))
+            {
+                int commId = int.Parse(lstViewCommInfo.SelectedItems[0].SubItems[0].Text);
+                var contacts = db.ContactInformations.FirstOrDefault(x => x.ID == commId);
+
+                if (contacts != null)
+                {
+                    contacts.CommDetail = userInput;
+                    db.SaveChanges();
+                    DialogResult result = MessageBox.Show("İletişim bilgisi başarıyla güncellendi.", "Başarılı", MessageBoxButtons.OK);
+                    if (result == DialogResult.OK)
+                    {
+                        LoadCommInfo();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Belirtilen ID'ye sahip iletişim bilgisi bulunamadı.", "Hata");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Metin girmediniz!", "Hata");
+            }
+        }
+
+        private void silToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            int commId = int.Parse(lstViewCommInfo.SelectedItems[0].SubItems[0].Text);
+            var contacs = db.ContactInformations.FirstOrDefault(x => x.ID == commId);
+
+            if (contacs != null)
+            {
+                db.ContactInformations.Remove(contacs);
+                db.SaveChanges();
+                DialogResult result = MessageBox.Show("İletişim bilgisi silindi.", "Başarılı", MessageBoxButtons.OK);
+                if (result == DialogResult.OK)
+                {
+                    LoadCommInfo();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Belirtilen ID'ye sahip iletişim bilgisi bulunamadı.", "Hata");
+            }
+        }
+
+        private void yeniEkleToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            AddressAdd communicationAdd = new AddressAdd(_customerID);
+            communicationAdd.Show();
         }
     }
 }
