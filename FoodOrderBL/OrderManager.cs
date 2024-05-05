@@ -1,5 +1,6 @@
 ﻿using FoodOrderDAL.Context;
 using FoodOrderDAL.Repositories;
+using FoodOrderDomain;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,29 @@ namespace FoodOrderBL
         {   
             _db = new AppDBContext();
             _key = key;
+        }
+
+        public bool UpdateOrder(int orderID)
+        {
+            try
+            {
+                var order = _db.Orders.FirstOrDefault(x => x.ID == orderID);
+                if (order != null)
+                {
+                    order.OrderStateID = 3;
+                    _db.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
         }
         public List<OrderInfo> GetOrders()
         {

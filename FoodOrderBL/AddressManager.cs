@@ -46,7 +46,52 @@ namespace FoodOrderBL
                 return false;
             }
         }
+        public bool UpdateAddress(int addressID, string addressDetail)
+        {
+            try
+            {
+                var address = _db.AddressInformations.FirstOrDefault(x => x.ID == addressID);
+                if (address != null)
+                {
+                    address.AddressDetail = addressDetail;
+                    _db.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
 
+                return false;
+            }
+            
+        }
+        public bool DeleteAddress(int addressID)
+        {
+            try
+            {
+                var address = _db.AddressInformations.FirstOrDefault(x => x.ID == addressID);
+                if (address != null)
+                {
+                    _db.AddressInformations.Remove(address);
+                    _db.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+        }
+        
         public List<AddressInformations> GetAddressInfo()
         {
             if (_db != null)
