@@ -1,6 +1,7 @@
 ﻿using FoodOrderDAL.Context;
 using FoodOrderDAL.Repositories;
 using FoodOrderDomain;
+using FoodOrderDomain.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -92,7 +93,7 @@ namespace FoodOrderBL
             }
         }
         
-        public List<AddressInformations> GetAddressInfo()
+        public List<AddressView> GetAddressInfo()
         {
             if (_db != null)
             {

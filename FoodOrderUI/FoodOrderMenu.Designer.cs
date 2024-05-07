@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            siparişYönetimiToolStripMenuItem = new ToolStripMenuItem();
             contextMenuStrip1 = new ContextMenuStrip(components);
-            siparisYonetimiToolStripMenuItem1 = new ToolStripMenuItem();
-            urunYonetimiToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1 = new MenuStrip();
-            menüYönetimiToolStripMenuItem = new ToolStripMenuItem();
+            orderManagerToolStripMenuItem = new ToolStripMenuItem();
+            productManagerToolStripMenuItem = new ToolStripMenuItem();
+            menuManagerToolStripMenuItem = new ToolStripMenuItem();
             pbProductPic = new PictureBox();
             cbProducts = new ComboBox();
             cbKetchup = new CheckBox();
@@ -69,9 +68,12 @@
             lblProduct = new Label();
             lbProduct = new ListBox();
             gpOrder = new GroupBox();
+            lblOrderNotes = new Label();
+            txtOrderNotes = new TextBox();
             lstOrderItems = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
+            columnHeader3 = new ColumnHeader();
             nuMenuAmount = new NumericUpDown();
             lblMenuAmount = new Label();
             nuProductAmount = new NumericUpDown();
@@ -81,8 +83,6 @@
             cbMenus = new ComboBox();
             lblMenus = new Label();
             lblProducts = new Label();
-            columnHeader3 = new ColumnHeader();
-            contextMenuStrip1.SuspendLayout();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbProductPic).BeginInit();
             gpProductAdd.SuspendLayout();
@@ -96,49 +96,42 @@
             ((System.ComponentModel.ISupportInitialize)nuProductAmount).BeginInit();
             SuspendLayout();
             // 
-            // siparişYönetimiToolStripMenuItem
-            // 
-            siparişYönetimiToolStripMenuItem.Name = "siparişYönetimiToolStripMenuItem";
-            siparişYönetimiToolStripMenuItem.Size = new Size(184, 24);
-            siparişYönetimiToolStripMenuItem.Text = "Sipariş Yönetimi";
-            // 
             // contextMenuStrip1
             // 
             contextMenuStrip1.ImageScalingSize = new Size(20, 20);
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { siparişYönetimiToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(185, 28);
-            // 
-            // siparisYonetimiToolStripMenuItem1
-            // 
-            siparisYonetimiToolStripMenuItem1.Name = "siparisYonetimiToolStripMenuItem1";
-            siparisYonetimiToolStripMenuItem1.Size = new Size(129, 24);
-            siparisYonetimiToolStripMenuItem1.Text = "Sipariş Yönetimi";
-            siparisYonetimiToolStripMenuItem1.Click += siparisYonetimiToolStripMenuItem1_Click;
-            // 
-            // urunYonetimiToolStripMenuItem
-            // 
-            urunYonetimiToolStripMenuItem.Name = "urunYonetimiToolStripMenuItem";
-            urunYonetimiToolStripMenuItem.Size = new Size(116, 24);
-            urunYonetimiToolStripMenuItem.Text = "Ürün Yönetimi";
-            urunYonetimiToolStripMenuItem.Click += urunYonetimiToolStripMenuItem_Click;
+            contextMenuStrip1.Size = new Size(61, 4);
             // 
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { siparisYonetimiToolStripMenuItem1, urunYonetimiToolStripMenuItem, menüYönetimiToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { orderManagerToolStripMenuItem, productManagerToolStripMenuItem, menuManagerToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1068, 28);
+            menuStrip1.Size = new Size(903, 28);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
-            // menüYönetimiToolStripMenuItem
+            // orderManagerToolStripMenuItem
             // 
-            menüYönetimiToolStripMenuItem.Name = "menüYönetimiToolStripMenuItem";
-            menüYönetimiToolStripMenuItem.Size = new Size(122, 24);
-            menüYönetimiToolStripMenuItem.Text = "Menü Yönetimi";
-            menüYönetimiToolStripMenuItem.Click += menüYönetimiToolStripMenuItem_Click;
+            orderManagerToolStripMenuItem.Name = "orderManagerToolStripMenuItem";
+            orderManagerToolStripMenuItem.Size = new Size(129, 24);
+            orderManagerToolStripMenuItem.Text = "Sipariş Yönetimi";
+            orderManagerToolStripMenuItem.Click += orderManagerToolStripMenuItem_Click;
+            // 
+            // productManagerToolStripMenuItem
+            // 
+            productManagerToolStripMenuItem.Name = "productManagerToolStripMenuItem";
+            productManagerToolStripMenuItem.Size = new Size(116, 24);
+            productManagerToolStripMenuItem.Text = "Ürün Yönetimi";
+            productManagerToolStripMenuItem.Click += productManagerToolStripMenuItem_Click;
+            // 
+            // menuManagerToolStripMenuItem
+            // 
+            menuManagerToolStripMenuItem.Name = "menuManagerToolStripMenuItem";
+            menuManagerToolStripMenuItem.Size = new Size(122, 24);
+            menuManagerToolStripMenuItem.Text = "Menü Yönetimi";
+            menuManagerToolStripMenuItem.Click += menüYönetimiToolStripMenuItem_Click;
             // 
             // pbProductPic
             // 
@@ -179,7 +172,7 @@
             // lblOrderDetails
             // 
             lblOrderDetails.AutoSize = true;
-            lblOrderDetails.Location = new Point(218, 11);
+            lblOrderDetails.Location = new Point(225, 23);
             lblOrderDetails.Name = "lblOrderDetails";
             lblOrderDetails.Size = new Size(50, 20);
             lblOrderDetails.TabIndex = 7;
@@ -188,7 +181,7 @@
             // lblTotal
             // 
             lblTotal.AutoSize = true;
-            lblTotal.Location = new Point(311, 418);
+            lblTotal.Location = new Point(578, 356);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(59, 20);
             lblTotal.TabIndex = 10;
@@ -197,7 +190,7 @@
             // lblTotalPrice
             // 
             lblTotalPrice.AutoSize = true;
-            lblTotalPrice.Location = new Point(399, 418);
+            lblTotalPrice.Location = new Point(666, 356);
             lblTotalPrice.Name = "lblTotalPrice";
             lblTotalPrice.Size = new Size(14, 20);
             lblTotalPrice.TabIndex = 11;
@@ -205,9 +198,9 @@
             // 
             // btnOrderConfirm
             // 
-            btnOrderConfirm.Location = new Point(497, 395);
+            btnOrderConfirm.Location = new Point(412, 513);
             btnOrderConfirm.Name = "btnOrderConfirm";
-            btnOrderConfirm.Size = new Size(131, 66);
+            btnOrderConfirm.Size = new Size(131, 53);
             btnOrderConfirm.TabIndex = 12;
             btnOrderConfirm.Text = "Siparişi Onayla";
             btnOrderConfirm.UseVisualStyleBackColor = true;
@@ -322,7 +315,7 @@
             gpMenuAdd.Controls.Add(lblMenuName);
             gpMenuAdd.Controls.Add(lblProduct);
             gpMenuAdd.Controls.Add(lbProduct);
-            gpMenuAdd.Location = new Point(252, 619);
+            gpMenuAdd.Location = new Point(34, 36);
             gpMenuAdd.Name = "gpMenuAdd";
             gpMenuAdd.Size = new Size(645, 404);
             gpMenuAdd.TabIndex = 16;
@@ -452,6 +445,8 @@
             // 
             // gpOrder
             // 
+            gpOrder.Controls.Add(lblOrderNotes);
+            gpOrder.Controls.Add(txtOrderNotes);
             gpOrder.Controls.Add(lstOrderItems);
             gpOrder.Controls.Add(nuMenuAmount);
             gpOrder.Controls.Add(lblMenuAmount);
@@ -472,10 +467,27 @@
             gpOrder.Controls.Add(lblOrderDetails);
             gpOrder.Location = new Point(34, 36);
             gpOrder.Name = "gpOrder";
-            gpOrder.Size = new Size(723, 577);
+            gpOrder.Size = new Size(723, 595);
             gpOrder.TabIndex = 14;
             gpOrder.TabStop = false;
             gpOrder.Text = "Sipariş";
+            // 
+            // lblOrderNotes
+            // 
+            lblOrderNotes.AutoSize = true;
+            lblOrderNotes.Location = new Point(274, 372);
+            lblOrderNotes.Name = "lblOrderNotes";
+            lblOrderNotes.Size = new Size(90, 20);
+            lblOrderNotes.TabIndex = 32;
+            lblOrderNotes.Text = "Sipariş Notu";
+            // 
+            // txtOrderNotes
+            // 
+            txtOrderNotes.Location = new Point(274, 400);
+            txtOrderNotes.Multiline = true;
+            txtOrderNotes.Name = "txtOrderNotes";
+            txtOrderNotes.Size = new Size(411, 86);
+            txtOrderNotes.TabIndex = 31;
             // 
             // lstOrderItems
             // 
@@ -486,6 +498,7 @@
             lstOrderItems.TabIndex = 23;
             lstOrderItems.UseCompatibleStateImageBehavior = false;
             lstOrderItems.View = View.Details;
+            lstOrderItems.Visible = false;
             // 
             // columnHeader1
             // 
@@ -494,6 +507,10 @@
             // columnHeader2
             // 
             columnHeader2.Text = "ItemId";
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "Amount";
             // 
             // nuMenuAmount
             // 
@@ -571,15 +588,11 @@
             lblProducts.TabIndex = 13;
             lblProducts.Text = "Ürünler";
             // 
-            // columnHeader3
-            // 
-            columnHeader3.Text = "Amount";
-            // 
             // FoodOrderMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1068, 1061);
+            ClientSize = new Size(903, 670);
             Controls.Add(gpMenuAdd);
             Controls.Add(gpOrder);
             Controls.Add(gpProductAdd);
@@ -588,7 +601,6 @@
             Name = "FoodOrderMenu";
             Text = "ProductManager";
             Load += FoodOrderMenu_Load;
-            contextMenuStrip1.ResumeLayout(false);
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbProductPic).EndInit();
@@ -610,10 +622,9 @@
 
         #endregion
 
-        private ToolStripMenuItem siparişYönetimiToolStripMenuItem;
         private ContextMenuStrip contextMenuStrip1;
-        private ToolStripMenuItem siparisYonetimiToolStripMenuItem1;
-        private ToolStripMenuItem urunYonetimiToolStripMenuItem;
+        private ToolStripMenuItem orderManagerToolStripMenuItem;
+        private ToolStripMenuItem productManagerToolStripMenuItem;
         private MenuStrip menuStrip1;
         private PictureBox pbProductPic;
         private ComboBox cbProducts;
@@ -633,7 +644,7 @@
         private Label lblProductName;
         private Label lblPrepTime;
         private NumericUpDown nuPrepTime;
-        private ToolStripMenuItem menüYönetimiToolStripMenuItem;
+        private ToolStripMenuItem menuManagerToolStripMenuItem;
         private GroupBox gpOrder;
         private Label lblMenus;
         private Label lblProducts;
@@ -663,5 +674,7 @@
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
+        private Label lblOrderNotes;
+        private TextBox txtOrderNotes;
     }
 }

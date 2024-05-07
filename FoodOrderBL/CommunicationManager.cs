@@ -1,6 +1,7 @@
 ﻿using FoodOrderDAL.Context;
 using FoodOrderDAL.Repositories;
 using FoodOrderDomain;
+using FoodOrderDomain.Views;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
@@ -93,7 +94,7 @@ namespace FoodOrderBL
                 return false;
             }
         }
-        public List<ContactInformations> GetCommInfo()
+        public List<ContactInfoView> GetCommInfo()
         {
             if (_db != null)
             {

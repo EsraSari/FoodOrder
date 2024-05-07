@@ -35,6 +35,8 @@
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             lstViewAdress = new ListView();
+            columnHeader11 = new ColumnHeader();
+            columnHeader12 = new ColumnHeader();
             cntAddressUpdate = new ContextMenuStrip(components);
             addNewAddressToolStripMenuItem = new ToolStripMenuItem();
             updateAddressToolStripMenuItem = new ToolStripMenuItem();
@@ -52,7 +54,6 @@
             columnHeader8 = new ColumnHeader();
             columnHeader9 = new ColumnHeader();
             columnHeader10 = new ColumnHeader();
-            columnHeader11 = new ColumnHeader();
             cntCommUpdate = new ContextMenuStrip(components);
             addNewContactStripMenuItem = new ToolStripMenuItem();
             updateContactToolStripMenuItem = new ToolStripMenuItem();
@@ -64,7 +65,7 @@
             // 
             // btnAddressInformation
             // 
-            btnAddressInformation.Location = new Point(116, 77);
+            btnAddressInformation.Location = new Point(48, 94);
             btnAddressInformation.Name = "btnAddressInformation";
             btnAddressInformation.Size = new Size(145, 93);
             btnAddressInformation.TabIndex = 0;
@@ -74,7 +75,7 @@
             // 
             // btnOrders
             // 
-            btnOrders.Location = new Point(591, 77);
+            btnOrders.Location = new Point(475, 94);
             btnOrders.Name = "btnOrders";
             btnOrders.Size = new Size(145, 93);
             btnOrders.TabIndex = 1;
@@ -85,31 +86,42 @@
             // columnHeader1
             // 
             columnHeader1.Text = "ID";
+            columnHeader1.Width = 100;
             // 
             // columnHeader2
             // 
-            columnHeader2.Text = "Müşteri ID";
-            columnHeader2.Width = 90;
+            columnHeader2.Text = "Ülke";
+            columnHeader2.Width = 100;
             // 
             // columnHeader3
             // 
-            columnHeader3.Text = "Adres Detayı";
-            columnHeader3.Width = 700;
+            columnHeader3.Text = "İl";
+            columnHeader3.Width = 100;
             // 
             // lstViewAdress
             // 
-            lstViewAdress.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
+            lstViewAdress.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader11, columnHeader12 });
             lstViewAdress.ContextMenuStrip = cntAddressUpdate;
             lstViewAdress.Dock = DockStyle.Bottom;
             lstViewAdress.FullRowSelect = true;
             lstViewAdress.GridLines = true;
             lstViewAdress.Location = new Point(0, 265);
             lstViewAdress.Name = "lstViewAdress";
-            lstViewAdress.Size = new Size(848, 383);
+            lstViewAdress.Size = new Size(663, 383);
             lstViewAdress.TabIndex = 7;
             lstViewAdress.UseCompatibleStateImageBehavior = false;
             lstViewAdress.View = View.Details;
             lstViewAdress.Visible = false;
+            // 
+            // columnHeader11
+            // 
+            columnHeader11.Text = "İlçe";
+            columnHeader11.Width = 100;
+            // 
+            // columnHeader12
+            // 
+            columnHeader12.Text = "Adres Detayı";
+            columnHeader12.Width = 260;
             // 
             // cntAddressUpdate
             // 
@@ -147,7 +159,7 @@
             lstViewOrders.GridLines = true;
             lstViewOrders.Location = new Point(0, 265);
             lstViewOrders.Name = "lstViewOrders";
-            lstViewOrders.Size = new Size(848, 383);
+            lstViewOrders.Size = new Size(663, 383);
             lstViewOrders.TabIndex = 8;
             lstViewOrders.UseCompatibleStateImageBehavior = false;
             lstViewOrders.View = View.Details;
@@ -168,7 +180,7 @@
             // 
             // columnHeader7
             // 
-            columnHeader7.Text = "OrderDetail";
+            columnHeader7.Text = "Sipariş Detay";
             columnHeader7.Width = 500;
             // 
             // cntOrderUpdate
@@ -194,7 +206,7 @@
             // 
             // btnCommInfos
             // 
-            btnCommInfos.Location = new Point(354, 77);
+            btnCommInfos.Location = new Point(267, 94);
             btnCommInfos.Name = "btnCommInfos";
             btnCommInfos.Size = new Size(145, 93);
             btnCommInfos.TabIndex = 9;
@@ -204,13 +216,13 @@
             // 
             // lstViewCommInfo
             // 
-            lstViewCommInfo.Columns.AddRange(new ColumnHeader[] { columnHeader8, columnHeader9, columnHeader10, columnHeader11 });
+            lstViewCommInfo.Columns.AddRange(new ColumnHeader[] { columnHeader8, columnHeader9, columnHeader10 });
             lstViewCommInfo.ContextMenuStrip = cntCommUpdate;
             lstViewCommInfo.FullRowSelect = true;
             lstViewCommInfo.GridLines = true;
             lstViewCommInfo.Location = new Point(0, 265);
             lstViewCommInfo.Name = "lstViewCommInfo";
-            lstViewCommInfo.Size = new Size(848, 383);
+            lstViewCommInfo.Size = new Size(663, 383);
             lstViewCommInfo.TabIndex = 10;
             lstViewCommInfo.UseCompatibleStateImageBehavior = false;
             lstViewCommInfo.View = View.Details;
@@ -218,22 +230,17 @@
             // columnHeader8
             // 
             columnHeader8.Text = "ID";
-            columnHeader8.Width = 150;
+            columnHeader8.Width = 180;
             // 
             // columnHeader9
             // 
-            columnHeader9.Text = "Müşteri ID";
-            columnHeader9.Width = 150;
+            columnHeader9.Text = "İletişim Tipi";
+            columnHeader9.Width = 190;
             // 
             // columnHeader10
             // 
-            columnHeader10.Text = "İletişim Tipi";
-            columnHeader10.Width = 200;
-            // 
-            // columnHeader11
-            // 
-            columnHeader11.Text = "İletişim Detay";
-            columnHeader11.Width = 350;
+            columnHeader10.Text = "İletişim Detayı";
+            columnHeader10.Width = 290;
             // 
             // cntCommUpdate
             // 
@@ -267,7 +274,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(848, 648);
+            ClientSize = new Size(663, 648);
             Controls.Add(lstViewCommInfo);
             Controls.Add(btnCommInfos);
             Controls.Add(lstViewOrders);
@@ -307,11 +314,12 @@
         private ColumnHeader columnHeader8;
         private ColumnHeader columnHeader9;
         private ColumnHeader columnHeader10;
-        private ColumnHeader columnHeader11;
         private ContextMenuStrip cntCommUpdate;
         private ToolStripMenuItem addNewContactStripMenuItem;
         private ToolStripMenuItem updateContactToolStripMenuItem;
         private ToolStripMenuItem deleteContactToolStripMenuItem;
         private ToolStripMenuItem addNewAddressToolStripMenuItem;
+        private ColumnHeader columnHeader11;
+        private ColumnHeader columnHeader12;
     }
 }

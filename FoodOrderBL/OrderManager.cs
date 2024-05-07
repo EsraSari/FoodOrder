@@ -1,9 +1,11 @@
 ﻿using FoodOrderDAL.Context;
 using FoodOrderDAL.Repositories;
 using FoodOrderDomain;
+using FoodOrderDomain.Views;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,6 +50,49 @@ namespace FoodOrderBL
                 return false;
             }
         }
+
+        public bool CreateOrder(int customerID, int addressID, int contactID, decimal price, string orderNotes, List<OrderItems> orderItems)
+        {
+            try
+            {
+                Orders order = new Orders()
+                {
+                    CustomerID = customerID,
+                    AddressID = addressID,
+                    ContactID = contactID,
+                    OrderStateID = 1,
+                    PaymentMethodID = 1,
+                    PaymentStatus = true,
+                    Price = price,
+                    OrderNotes = orderNotes
+                };
+
+                _db.Orders.Add(order);
+                _db.SaveChanges();
+
+                int orderID = order.ID;
+                foreach (var orderItem in orderItems)
+                {
+                    OrderDetails orderDetail = new OrderDetails()
+                    {
+                        OrderID = orderID,
+                        ItemTypeID = orderItem.TypeID,
+                        ItemID = orderItem.ID,
+                        Amount = orderItem.Amount
+                    };
+                    _db.OrderDetails.Add(orderDetail);
+                }
+
+                _db.SaveChanges();
+                return true;
+            }
+
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         public List<OrderInfo> GetOrders()
         {
             if (_db != null)

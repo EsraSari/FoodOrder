@@ -1,6 +1,7 @@
 ﻿using FoodOrderBL;
 using FoodOrderDAL.Context;
 using FoodOrderDomain;
+using FoodOrderDomain.Views;
 
 namespace FoodOrderUI
 {
@@ -71,8 +72,10 @@ namespace FoodOrderUI
         private void addNewOrderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var addressDetail = addressManager.GetAddressInfo().FirstOrDefault();
+            var contactDetail = communicationManager.GetCommInfo().FirstOrDefault();
             int addressID = addressDetail.ID;
-            FoodOrderMenu orders = new FoodOrderMenu(_customerID, addressID);
+            int contactID = contactDetail.ID;
+            FoodOrderMenu orders = new FoodOrderMenu(_customerID, addressID, contactID);
             orders.ShowDialog();
             this.Close();
         }
@@ -142,11 +145,10 @@ namespace FoodOrderUI
             int index = 0;
             if (commInfos.Count() > 0)
             {
-                foreach (ContactInformations cc in commInfos)
+                foreach (ContactInfoView cc in commInfos)
                 {
                     lstViewCommInfo.Items.Add(cc.ID.ToString());
-                    lstViewCommInfo.Items[index].SubItems.Add(cc.CustomerID.ToString());
-                    lstViewCommInfo.Items[index].SubItems.Add(cc.ContactTypeID.ToString());
+                    lstViewCommInfo.Items[index].SubItems.Add(cc.ContactType.ToString());
                     lstViewCommInfo.Items[index].SubItems.Add(cc.CommDetail.ToString());
                     index++;
                 }
@@ -163,10 +165,12 @@ namespace FoodOrderUI
             int index = 0;
             if (addressInfo.Count() > 0)
             {
-                foreach (AddressInformations address in addressInfo)
+                foreach (AddressView address in addressInfo)
                 {
                     lstViewAdress.Items.Add(address.ID.ToString());
-                    lstViewAdress.Items[index].SubItems.Add(address.CustomerID.ToString());
+                    lstViewAdress.Items[index].SubItems.Add(address.Country.ToString());
+                    lstViewAdress.Items[index].SubItems.Add(address.City.ToString());
+                    lstViewAdress.Items[index].SubItems.Add(address.County.ToString());
                     lstViewAdress.Items[index].SubItems.Add(address.AddressDetail.ToString());
                     index++;
                 }

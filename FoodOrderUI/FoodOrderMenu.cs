@@ -1,10 +1,13 @@
 ﻿using FoodOrderBL;
 using FoodOrderDAL.Context;
 using FoodOrderDAL.Repositories;
-using FoodOrderDomain;
+using FoodOrderDomain.Views;
 using System.Data.Common;
+using System.Diagnostics;
+using System.Diagnostics.Metrics;
 using System.Security.Cryptography;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace FoodOrderUI
 {
@@ -14,17 +17,25 @@ namespace FoodOrderUI
         LoadComboBoxManager loadCombo;
         int _customerID;
         int _addressID;
+        int _contactID;
+        decimal total;
         public FoodOrderMenu()
         {
             InitializeComponent();
         }
-        public FoodOrderMenu(int customerID, int addressID)
+        public FoodOrderMenu(int customerID, int addressID, int contactID)
         {
             InitializeComponent();
             _customerID = customerID;
             _addressID = addressID;
+            _contactID = contactID;
         }
-        private void siparisYonetimiToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void orderManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadOrderItems();
+        }
+
+        private void LoadOrderItems()
         {
             gpOrder.Visible = true;
             gpProductAdd.Visible = false;
@@ -46,12 +57,13 @@ namespace FoodOrderUI
 
         private void FoodOrderMenu_Load(object sender, EventArgs e)
         {
-            gpOrder.Visible = false;
+            gpOrder.Visible = true;
             gpMenuAdd.Visible = false;
             gpProductAdd.Visible = false;
+            LoadOrderItems();
         }
 
-        private void urunYonetimiToolStripMenuItem_Click(object sender, EventArgs e)
+        private void productManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             gpProductAdd.Visible = true;
             gpOrder.Visible = false;
@@ -75,23 +87,24 @@ namespace FoodOrderUI
             decimal price = nuPrice.Value;
             int catID = (int)cbCategory.SelectedValue;
             int prepTime = (int)nuPrepTime.Value;
-            Products product = new Products()
-            {
-                ProductName = productName,
-                Price = price,
-                CategoryID = catID,
-                PreparationTime = prepTime,
-            };
-            db.Products.Add(product);
-            db.SaveChanges();
-            DialogResult dgResult = MessageBox.Show("Ürün eklendi", "", MessageBoxButtons.OK);
-            if (dgResult == DialogResult.OK)
-            {
-                txtProductName.Text = String.Empty;
-                nuPrice.Value = 0;
-                nuPrepTime.Value = 0;
-                cbCategory.SelectedIndex = -1;
 
+            ProductManager productManager = new ProductManager();
+            bool returnValue = productManager.CreateProduct(productName, price, catID, prepTime);
+
+            if (returnValue)
+            {
+                DialogResult result = MessageBox.Show("Ürün başarılı bir şekilde eklendi", "Başarılı", MessageBoxButtons.OK);
+                if (result == DialogResult.OK)
+                {
+                    txtProductName.Text = String.Empty;
+                    nuPrice.Value = 0;
+                    nuPrepTime.Value = 0;
+                    cbCategory.SelectedIndex = -1;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Hata alındı.");
             }
         }
 
@@ -164,7 +177,7 @@ namespace FoodOrderUI
         private decimal TotalPriceCalculate()
         {
             
-            decimal total = 0;
+            total = 0;
 
             foreach (ListViewItem item in lstOrderItems.Items)
             {
@@ -200,43 +213,35 @@ namespace FoodOrderUI
             int prepTime = (int)nuPrepTimeMenu.Value;
             bool isAllergen = cxbIsAllergen.Checked;
             decimal price = (int)nuMenuPrice.Value;
-            Menu menu = new Menu()
+
+            List<int> productIDs = new List<int>();
+            foreach (var item in lbSelectedItemIds.Items)
             {
-                MenuName = menuName,
-                IsAllergen = isAllergen,
-                PreparationTime = prepTime,
-                Price = price
-            };
-
-            db.Menu.Add(menu);
-            db.SaveChanges();
-
-            for (int i = 0; i < lbSelectedItemIds.Items.Count; i++)
-            {
-                int productId = (int)lbSelectedItemIds.Items[i];
-
-                // Her seçilen ürün için yeni bir ProductMenu nesnesi oluştur
-                ProductMenu productMenu = new ProductMenu
-                {
-                    MenuID = menu.ID, // Oluşturulan menünün ID'si
-                    ProductID = productId // Seçilen ürün ID'si
-                };
-
-                db.ProductMenu.Add(productMenu);
+                int productID = Convert.ToInt32(item);
+                productIDs.Add(productID);
             }
-            db.SaveChanges();
 
-            DialogResult dgResult = MessageBox.Show("Menü eklendi", "", MessageBoxButtons.OK);
-            if (dgResult == DialogResult.OK)
+            MenuManager menuManager = new MenuManager();
+            bool returnValue = menuManager.CreateMenu(menuName, prepTime, isAllergen, price, productIDs);
+
+            if (returnValue)
             {
-                txtMenuName.Text = String.Empty;
-                nuPrice.Value = 0;
-                nuPrepTimeMenu.Value = 0;
-                nuMenuPrice.Value = 0;
-                cxbIsAllergen.Checked = false;
-                cbProductList.SelectedItem = -1;
-                lbSelectedItemIds.Items.Clear();
-                lbProduct.Items.Clear();
+                DialogResult result = MessageBox.Show("Ürün başarılı bir şekilde eklendi", "Başarılı", MessageBoxButtons.OK);
+                if (result == DialogResult.OK)
+                {
+                    txtMenuName.Text = String.Empty;
+                    nuPrice.Value = 0;
+                    nuPrepTimeMenu.Value = 0;
+                    nuMenuPrice.Value = 0;
+                    cxbIsAllergen.Checked = false;
+                    cbProductList.SelectedItem = -1;
+                    lbSelectedItemIds.Items.Clear();
+                    lbProduct.Items.Clear();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Hata alındı.");
             }
         }
 
@@ -261,8 +266,34 @@ namespace FoodOrderUI
 
         private void btnOrderConfirm_Click(object sender, EventArgs e)
         {
-            OrderDetails orderDetail = new OrderDetails();
-            Orders order = new Orders();
+            string orderNotes = txtOrderNotes.Text.Trim();
+            List<OrderItems> orderItems = new List<OrderItems>();
+
+            foreach (ListViewItem item in lstOrderItems.Items)
+            {
+                int itemType = int.Parse(item.Text);
+                int itemId = int.Parse(item.SubItems[1].Text); // ID, örneğin ilk alt öğe olarak varsayıldı
+                int amount = int.Parse(item.SubItems[2].Text);
+                orderItems.Add(new OrderItems { TypeID = itemType, ID = itemId, Amount = amount });
+            }
+            OrderManager orderManager = new OrderManager();
+            
+            bool returnValue = orderManager.CreateOrder(_customerID, _addressID, _contactID, total, orderNotes, orderItems);
+
+            if (returnValue)
+            {
+                DialogResult result = MessageBox.Show("Sipariş oluşturuldu, siparişinizi takip etmek için tamam'a tıklayın.", "Başarılı", MessageBoxButtons.OK);
+                if (result == DialogResult.OK)
+                {
+                    UserProfile userProfile = new UserProfile(_customerID);
+                    userProfile.Show();
+                    this.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Hata alındı.");
+            }
         }
     }
 }

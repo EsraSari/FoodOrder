@@ -1,19 +1,22 @@
 ﻿using FoodOrderDAL.Context;
 using FoodOrderDomain;
+using FoodOrderDomain.Views;
 
 namespace FoodOrderDAL.Repositories
 {
     public class LoadInformations
     {
 
-        public static List<AddressInformations> LoadAddressInformations(AppDBContext db, int cid)
+        public static List<AddressView> LoadAddressInformations(AppDBContext db, int cid)
         {
             var addressInformations = (from ad in db.AddressInformations
                                        where ad.CustomerID == cid
-                                       select new AddressInformations
+                                       select new AddressView
                                        {
                                            ID = ad.ID,
-                                           CustomerID = ad.CustomerID,
+                                           Country = ad.Country.CountryName,
+                                           City = ad.City.CityName,
+                                           County = ad.County.CountyName,
                                            AddressDetail = ad.AddressDetail
                                        }).ToList();
 
@@ -50,15 +53,15 @@ namespace FoodOrderDAL.Repositories
             return orders;
         }
 
-        public static List<ContactInformations> LoadCommunicationInformations(AppDBContext db, int cid)
+        public static List<ContactInfoView> LoadCommunicationInformations(AppDBContext db, int cid)
         {
             var commInformations = (from cc in db.ContactInformations
                                        where cc.CustomerID == cid
-                                       select new ContactInformations
+                                       select new ContactInfoView
                                        {
                                            ID = cc.ID,
-                                           CustomerID = cc.CustomerID,
-                                           ContactTypeID = cc.ContactTypeID,
+                                           //ContactTypeID = cc.ContactTypeID,
+                                           ContactType = cc.ContactType.ContactType,
                                            CommDetail = cc.CommDetail
                                        }).ToList();
 
