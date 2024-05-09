@@ -36,8 +36,6 @@
             menuManagerToolStripMenuItem = new ToolStripMenuItem();
             pbProductPic = new PictureBox();
             cbProducts = new ComboBox();
-            cbKetchup = new CheckBox();
-            cbMayonnaise = new CheckBox();
             lblOrderDetails = new Label();
             lblTotal = new Label();
             lblTotalPrice = new Label();
@@ -131,7 +129,7 @@
             menuManagerToolStripMenuItem.Name = "menuManagerToolStripMenuItem";
             menuManagerToolStripMenuItem.Size = new Size(122, 24);
             menuManagerToolStripMenuItem.Text = "Menü Yönetimi";
-            menuManagerToolStripMenuItem.Click += menüYönetimiToolStripMenuItem_Click;
+            menuManagerToolStripMenuItem.Click += menuManagerToolStripMenuItem_Click;
             // 
             // pbProductPic
             // 
@@ -148,26 +146,6 @@
             cbProducts.Name = "cbProducts";
             cbProducts.Size = new Size(151, 28);
             cbProducts.TabIndex = 3;
-            // 
-            // cbKetchup
-            // 
-            cbKetchup.AutoSize = true;
-            cbKetchup.Location = new Point(15, 331);
-            cbKetchup.Name = "cbKetchup";
-            cbKetchup.Size = new Size(77, 24);
-            cbKetchup.TabIndex = 3;
-            cbKetchup.Text = "Ketçap";
-            cbKetchup.UseVisualStyleBackColor = true;
-            // 
-            // cbMayonnaise
-            // 
-            cbMayonnaise.AutoSize = true;
-            cbMayonnaise.Location = new Point(15, 375);
-            cbMayonnaise.Name = "cbMayonnaise";
-            cbMayonnaise.Size = new Size(91, 24);
-            cbMayonnaise.TabIndex = 4;
-            cbMayonnaise.Text = "Mayonez";
-            cbMayonnaise.UseVisualStyleBackColor = true;
             // 
             // lblOrderDetails
             // 
@@ -315,7 +293,7 @@
             gpMenuAdd.Controls.Add(lblMenuName);
             gpMenuAdd.Controls.Add(lblProduct);
             gpMenuAdd.Controls.Add(lbProduct);
-            gpMenuAdd.Location = new Point(34, 36);
+            gpMenuAdd.Location = new Point(34, 37);
             gpMenuAdd.Name = "gpMenuAdd";
             gpMenuAdd.Size = new Size(645, 404);
             gpMenuAdd.TabIndex = 16;
@@ -462,8 +440,6 @@
             gpOrder.Controls.Add(lblTotalPrice);
             gpOrder.Controls.Add(btnOrderConfirm);
             gpOrder.Controls.Add(lblTotal);
-            gpOrder.Controls.Add(cbKetchup);
-            gpOrder.Controls.Add(cbMayonnaise);
             gpOrder.Controls.Add(lblOrderDetails);
             gpOrder.Location = new Point(34, 36);
             gpOrder.Name = "gpOrder";
@@ -554,7 +530,7 @@
             // 
             // btnOrderAdd
             // 
-            btnOrderAdd.Location = new Point(27, 428);
+            btnOrderAdd.Location = new Point(42, 360);
             btnOrderAdd.Name = "btnOrderAdd";
             btnOrderAdd.Size = new Size(128, 45);
             btnOrderAdd.TabIndex = 16;
@@ -628,8 +604,6 @@
         private MenuStrip menuStrip1;
         private PictureBox pbProductPic;
         private ComboBox cbProducts;
-        private CheckBox cbKetchup;
-        private CheckBox cbMayonnaise;
         private Label lblOrderDetails;
         private Label lblTotal;
         private Label lblTotalPrice;
