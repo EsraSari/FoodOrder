@@ -22,6 +22,8 @@ namespace FoodOrderDomain
         public PaymentMethods PaymentMethod { get; set; }
         public string OrderNotes { get; set; } // siparişle ilgili not.
         public List<OrderDetails> OrderDetails { get; set; }
+
+
     }
 
 }

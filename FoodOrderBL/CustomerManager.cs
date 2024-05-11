@@ -36,11 +36,10 @@ namespace FoodOrderBL
                     ModifiedDate = DateTime.Now
                 };
                 _db.Customers.Add(customer);
-                _db.SaveChanges();
 
                 var contactInfo = new ContactInformations
                 {
-                    CustomerID = customer.ID,
+                    Customer = customer,
                     ContactTypeID = contactType,
                     CommDetail = commDetail
                 };
@@ -51,7 +50,7 @@ namespace FoodOrderBL
                     CountryID = country,
                     CityID = city,
                     CountyID = county,
-                    CustomerID = customer.ID,
+                    Customer = customer,
                     AddressDetail = addressDetail
                 };
                 _db.AddressInformations.Add(addressInfo);

@@ -29,13 +29,12 @@ namespace FoodOrderBL
                 };
 
                 _db.Menu.Add(menu);
-                _db.SaveChanges();
 
                 foreach (int productId in selectedProductIds)
                 {
                     ProductMenu productMenu = new ProductMenu
                     {
-                        MenuID = menu.ID,
+                        Menu = menu,
                         ProductID = productId
                     };
 

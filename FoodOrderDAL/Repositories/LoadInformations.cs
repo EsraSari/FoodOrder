@@ -28,7 +28,8 @@ namespace FoodOrderDAL.Repositories
         public static List<OrderInfo> LoadOrders(AppDBContext db, int cid)
         {
             var orders = db.Orders
-                            .GroupJoin(db.OrderDetails,
+				            .Where(order => order.CustomerID == cid)
+							.GroupJoin(db.OrderDetails,
                                 order => order.ID,
                                 orderDetail => orderDetail.OrderID,
                                 (order, orderDetails) => new
