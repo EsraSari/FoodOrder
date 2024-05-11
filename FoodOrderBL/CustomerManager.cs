@@ -71,7 +71,7 @@ namespace FoodOrderBL
             if (_db.Customers.FirstOrDefault(x => x.UserName == userName && x.Password == password) != null)
             {
                 int customerID = _db.Customers
-                    .Where(c => c.UserName == userName)
+                    .Where(c => c.UserName == userName && c.Password == password)
                     .Select(c => c.ID)
                     .FirstOrDefault();
                 if (customerID == 0)
