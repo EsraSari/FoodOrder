@@ -69,11 +69,5 @@ namespace FoodOrderDAL.Repositories
             return commInformations;
         }
     }
-    public class OrderInfo
-    {
-        public int OrderID { get; set; }
-        public decimal OrderPrice { get; set; }
-        public string OrderState { get; set; }
-        public string OrderDetail { get; set; }
-    }
+    
 }
