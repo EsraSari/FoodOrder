@@ -18,7 +18,7 @@ namespace FoodOrderDAL.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customers>()
-            .HasIndex(x => x.UserName) // Benzersiz olmasını istediğiniz özelliği belirtin
+            .HasIndex(x => x.UserName)
             .IsUnique();
 
 

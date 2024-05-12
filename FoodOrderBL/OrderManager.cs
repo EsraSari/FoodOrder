@@ -69,7 +69,7 @@ namespace FoodOrderBL
 
                 _db.Orders.Add(order);
 
-                int orderID = order.ID;
+                
                 foreach (var orderItem in orderItems)
                 {
                     OrderDetails orderDetail = new OrderDetails()

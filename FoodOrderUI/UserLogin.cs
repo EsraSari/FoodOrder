@@ -28,7 +28,7 @@ namespace FoodOrderUI
                 MessageBox.Show("Kullanýcý adý ya da parola hatalý", "Tekrar Deneyiniz", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtUserName.Text = txtUserName.Text = "";
                 txtPassword.Clear();
-                txtUserName.Focus(); // mouse imlecini oraya getirir.
+                txtUserName.Focus(); 
             }
 
         }
