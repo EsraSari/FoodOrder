@@ -61,7 +61,6 @@ namespace FoodOrderDAL.Repositories
                                        select new ContactInfoView
                                        {
                                            ID = cc.ID,
-                                           //ContactTypeID = cc.ContactTypeID,
                                            ContactType = cc.ContactType.ContactType,
                                            CommDetail = cc.CommDetail
                                        }).ToList();
