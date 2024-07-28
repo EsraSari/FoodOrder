@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proje README</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        pre {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: "Courier New", Courier, monospace;
+            background: #e4e4e4;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .center {
+            text-align: center;
+        }
+        .badge {
+            margin-right: 10px;
+        }
+        .donate-btn {
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="center">
+            <a href="#">
+                <img alt="Proje Logosu" src="https://via.placeholder.com/60" width="60" />
+            </a>
+        </p>
+        <h1 class="center">Proje Başlığı</h1>
+
+        <p class="center">
+            <a href="#" target="blank">
+                <img src="https://img.shields.io/github/license/username/repo?style=flat-square" alt="license" class="badge" />
+            </a>
+            <a href="#" target="blank">
+                <img src="https://img.shields.io/github/forks/username/repo?style=flat-square" alt="forks" class="badge" />
+            </a>
+            <a href="#" target="blank">
+                <img src="https://img.shields.io/github/stars/username/repo?style=flat-square" alt="stars" class="badge" />
+            </a>
+            <a href="#" target="blank">
+                <img src="https://img.shields.io/github/issues/username/repo?style=flat-square" alt="issues" class="badge" />
+            </a>
+            <a href="#" target="blank">
+                <img src="https://img.shields.io/github/issues-pr/username/repo?style=flat-square" alt="pull-requests" class="badge" />
+            </a>
+        </p>
+
+        <p class="center"><img src="https://via.placeholder.com/800x400" alt="Proje Demo" /></p>
+
+        <p class="center">
+            <a href="#" target="blank">Demo'yu Görüntüle</a>
+            ·
+            <a href="#" target="blank">Hata Bildir</a>
+            ·
+            <a href="#" target="blank">Özellik Talep Et</a>
+        </p>
+
+        <p class="center">
+            <i>Bu aracı beğendiniz mi? Lütfen <a href="https://paypal.me/username/10">bağış yapmayı</a> düşünün 💸</i>
+        </p>
+
+        <p class="center">
+            <a href="https://www.paypal.me/username"><img src="https://img.shields.io/badge/support-PayPal-blue?logo=PayPal&style=flat-square&label=Donate" alt="sponsor" class="badge" /></a>
+            <a href='https://ko-fi.com/A0A81XXSX' target='_blank'><img height='23' width="100" src='https://cdn.ko-fi.com/cdn/kofi3.png?v=2' alt='Buy Coffee' /></a>
+            <a href="https://www.buymeacoffee.com/username" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="23" width="100" class="donate-btn" /></a>
+        </p>
+
+        <h2>📖 Proje Açıklaması</h2>
+        <p>Bu proje, .Net ve Entity Framework kullanılarak geliştirilmiş kapsamlı bir sistemdir. Sistem, ürünler, menüler, kullanıcı kayıtları, girişleri, siparişler ve müşteri bilgilerini yönetmek için kullanılır.</p>
+
+        <h2>🚀 Özellikler</h2>
+        <ul>
+            <li><strong>Müşteri Bilgileri Girişi:</strong> Müşteriler adres ve iletişim bilgilerini girebilirler (Ülke, il, ilçe, adres detayı, e-posta, telefon).</li>
+            <li><strong>Sipariş Yönetimi:</strong> Siparişleri listeleme ve yeni sipariş girişi (Tek ürün veya ürün+menü seçimi).</li>
+            <li><strong>Ürün Yönetimi:</strong> Yeni ürün girişi ve mevcut ürünleri yönetme.</li>
+            <li><strong>Menü Yönetimi:</strong> Daha önce girilmiş ürünlerle yeni menü oluşturma.</li>
+        </ul>
+
+        <h2>🛠️ Kurulum Adımları</h2>
+        <ol>
+            <li>Depoyu klonlayın:
+                <pre><code>git clone https://github.com/username/repo.git</code></pre>
+            </li>
+            <li>Proje dizinine gidin:
+                <pre><code>cd repo</code></pre>
+            </li>
+            <li>Bağımlılıkları yükleyin:
+                <pre><code>dotnet restore</code></pre>
+            </li>
+            <li>Veritabanını güncelleyin:
+                <pre><code>dotnet ef database update</code></pre>
+            </li>
+            <li>Projeyi çalıştırın:
+                <pre><code>dotnet run</code></pre>
+            </li>
+        </ol>
+
+        <h2>🍰 Katkıda Bulunma</h2>
+        <p>Bu projeye katkıda bulunmak isterseniz, lütfen depoyu fork edin ve bir özellik dalı kullanın. Pull request'ler sıcak karşılanır.</p>
+        <ol>
+            <li>Depoyu fork edin.</li>
+            <li>Yeni bir dal oluşturun:
+                <pre><code>git checkout -b ozellik/ozellik-adi</code></pre>
+            </li>
+            <li>Değişikliklerinizi yapın ve commit edin:
+                <pre><code>git commit -m 'Bir özellik ekle'</code></pre>
+            </li>
+            <li>Dala gönderin:
+                <pre><code>git push origin ozellik/ozellik-adi</code></pre>
+            </li>
+            <li>Bir pull request oluşturun.</li>
+        </ol>
+
+        <h2>💻 Geliştirilen Teknolojiler</h2>
+        <ul>
+            <li><a href="https://dotnet.microsoft.com/">.Net</a></li>
+            <li><a href="https://docs.microsoft.com/en-us/ef/">Entity Framework</a></li>
+        </ul>
+
+        <h2>🙇 Özel Teşekkürler</h2>
+        <ul>
+            <li>Bu projeye katkıda bulunan tüm destekçilere teşekkürler.</li>
+        </ul>
+
+        <h2>🙏 Destek</h2>
+        <p>
+            <a href="https://www.paypal.me/username"><img src="https://ionicabizau.github.io/badges/paypal.svg" alt="sponsor" /></a>
+            <a href="https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fusername%2Frepo">
+                <img src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fusername%2Frepo" alt="tweet" />
+            </a>
+        </p>
+
+        <p class="center">
+            <a href='https://ko-fi.com/A0A81XXSX' target='_blank'><img height='23' width="100" src='https://cdn.ko-fi.com/cdn/kofi3.png?v=2' alt='Buy Coffee' /></a>
+            <a href="https://www.buymeacoffee.com/username" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="23" width="100" class="donate-btn" /></a
